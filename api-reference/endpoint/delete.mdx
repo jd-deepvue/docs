@@ -1,4 +1,5 @@
 ---
-title: 'Delete Plant'
-openapi: 'DELETE /plants/{id}'
+title: 'Verify Otp'
+openapi: 'POST /v1/ekyc/aadhaar/verify-otp'
+description : 'This API will validate the OTP entered by the user to authenticate with UIDAI. Once successfully validated response will have the below details.   \n- Reference number\n- Resident’s name\n- Resident's address\n- Gender\n- Photo\n- Date of Birth\n- Mobile number in hashed form\n- Email in hashed form'
 ---
