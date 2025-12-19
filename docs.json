@@ -57,7 +57,7 @@
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Offline Aadhaar eKYC API",
             "pages": [
               "api-reference/endpoint/get",
               "api-reference/endpoint/create",
