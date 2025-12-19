@@ -52,7 +52,7 @@
         "groups": [
           {
             "group": "API documentation",
-            "openapi": "openapi.json"
+            "openapi": "api-reference/openapi.json"
           },
           {
             "group": "Offline Aadhaar eKYC API",
