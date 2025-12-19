@@ -57,7 +57,7 @@
             ]
           },
           {
-            "group": "Offline Aadhaar eKYC API",
+            "dropdown": "Offline Aadhaar eKYC API",
             "pages": [
               "api-reference/endpoint/aadhaar_initate_session",
               "api-reference/endpoint/aadhaar_generate_otp",
