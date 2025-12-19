@@ -61,7 +61,7 @@
             "pages": [
               "api-reference/endpoint/get",
               "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
+              "api-reference/endpoint/aadhaar_verify_otp",
               "api-reference/endpoint/webhook"
             ]
           }
