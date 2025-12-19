@@ -59,7 +59,7 @@
           {
             "group": "Offline Aadhaar eKYC API",
             "pages": [
-              "api-reference/endpoint/get",
+              "api-reference/endpoint/aadhaar_initate_session",
               "api-reference/endpoint/create",
               "api-reference/endpoint/aadhaar_verify_otp",
               "api-reference/endpoint/webhook"
