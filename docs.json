@@ -57,7 +57,7 @@
           {
             "group": "Offline Aadhaar eKYC API",
             "pages": [
-              "GET /v1/ekyc/aadhaar/connect"
+              "/api-reference/offline_aadhaar_ekyc/initiate_session"
             ]
           }
 
