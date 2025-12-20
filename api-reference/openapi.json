@@ -31819,6 +31819,18 @@
       }
     },
     "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "description": "API key provided by Deepvue"
+      },
+      "ClientIdAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "client-id",
+        "description": "Client ID issued by Deepvue"
+      },
       "Oauth2ClientCredentials": {
         "type": "oauth2",
         "flows": {
