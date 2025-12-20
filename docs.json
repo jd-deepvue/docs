@@ -53,6 +53,10 @@
           {
             "group": "API documentation",
             "openapi": "api-reference/openapi.json"
+          },
+          {
+            "group": "KYC APIs",
+            "openapi": "api-reference/openapi.json"
           }
 
         ]
