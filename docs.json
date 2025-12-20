@@ -51,14 +51,9 @@
         "tab": "API reference",
         "groups": [
           {
-            "group": "API documentation",
-            "openapi": "api-reference/openapi.json"
-          },
-          {
-            "group": "KYC APIs",
-            "openapi": "api-reference/openapi.json",
+            "group": "Offline Aadhaar eKYC API",
             "pages": [
-              "GET /v1/verification/panbasic"
+              "api-reference/offline_aadhaar_ekyc/initiate_session"
             ]
           }
 
