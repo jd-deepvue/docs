@@ -56,7 +56,10 @@
           },
           {
             "group": "KYC APIs",
-            "openapi": "api-reference/openapi.json"
+            "openapi": "api-reference/openapi.json",
+            "pages": [
+              "GET /v1/verification/panbasic"
+            ]
           }
 
         ]
