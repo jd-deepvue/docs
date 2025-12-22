@@ -1,0 +1,19 @@
+---
+title: 'Face Match API - V2'
+openapi: 'POST /v2/facematch'
+description: |
+  The Realtime Face Match API enables quick and reliable face comparison between two documents.
+
+  It accepts two files—either two ID card images or PDFs, or one ID card and a selfie—and performs
+  AI-powered facial recognition for real-time identity verification.
+
+  **The API returns:**
+  - Whether the faces match or not
+  - A confidence score indicating the accuracy of the match
+
+  **What’s New in v2?**
+  📄 **PDF Support Added**: You can now submit PDF files as input documents in addition to images.
+
+  🛠️ **Improved Response sub_code**: More granular and actionable sub-codes are returned to help
+  better interpret and handle verification outcomes.
+---

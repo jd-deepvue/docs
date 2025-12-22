@@ -1,48 +1,23 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Deepvue API Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#e84278",
+    "light": "#e84278",
+    "dark": "#e84278"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Introduction",
         "groups": [
           {
             "group": "Getting started",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "developer_documentation",
+              "introduction"
             ]
           }
         ]
@@ -51,34 +26,303 @@
         "tab": "API reference",
         "groups": [
           {
-            "group": "API documentation",
-            "openapi": "api-reference/openapi.json"
+            "group": "API Keys",
+            "pages": [
+              "/api-reference/api_keys/introduction",
+              "/api-reference/api_keys/authentication"
+            ]
           },
           {
-            "group": "Offline Aadhaar eKYC API",
+            "group": "APIs",
+            "expanded": false,
             "pages": [
+              {
+            "group": "Offline Aadhaar eKYC API",
+            "expanded": false,
+            "pages": [
+              "/api-reference/offline_aadhaar_ekyc/introduction",
               "/api-reference/offline_aadhaar_ekyc/initiate_session",
-              "/api-reference/offline_aadhaar_ekyc/offline_aadhaar_ekyc"
+              "/api-reference/offline_aadhaar_ekyc/generate_otp",
+              "api-reference/offline_aadhaar_ekyc/verify_otp",
+              "api-reference/offline_aadhaar_ekyc/reload_captcha"
+            ]
+          },
+          {
+            "group": "Offline Aadhaar eKYC API - V2",
+            "expanded": false,
+            "pages": [
+              "/api-reference/offline_aadhaar_ekyc_v2/introduction",
+              "/api-reference/offline_aadhaar_ekyc_v2/generate_otp",
+              "/api-reference/offline_aadhaar_ekyc_v2/verify_otp"
+            ]
+          },
+          {
+            "group": "Digilocker API",
+            "expanded": false,
+            "pages": [
+              "/api-reference/digilocker_api/introduction",
+              "/api-reference/digilocker_api/initiate_session",
+              "/api-reference/digilocker_api/access_token",
+              "/api-reference/digilocker_api/e-aadhaar_api",
+              "/api-reference/digilocker_api/issued_files",
+              "/api-reference/digilocker_api/download_file"
+            ]
+          },
+          {
+            "group": "KYC APIs",
+            "expanded": false,
+            "pages": [
+              "/api-reference/kyc_apis/aadhaar_verification_basic",
+              "/api-reference/kyc_apis/pan_verification_basic",
+              "/api-reference/kyc_apis/pan_verification_plus",
+              "/api-reference/kyc_apis/pan_verification_plus_v2",
+              "/api-reference/kyc_apis/pan_aadhaar_link_status",
+              "/api-reference/kyc_apis/pan_to_father_name",
+              "/api-reference/kyc_apis/pan_to_employment_status",
+              "/api-reference/kyc_apis/pan_kra_verification",
+              "/api-reference/kyc_apis/passport_verification",
+              "/api-reference/kyc_apis/vehicle_rc_verification_advanced",
+              "/api-reference/kyc_apis/rc_challan_details",
+              "/api-reference/kyc_apis/bank_account_verification_penny_drop",
+              "/api-reference/kyc_apis/ifsc_verification",
+              "/api-reference/kyc_apis/upi_verification",
+              "/api-reference/kyc_apis/upi_advanced_verification",
+              "/api-reference/kyc_apis/mobile_to_upi",
+              "/api-reference/kyc_apis/name_match"
+            ]
+          },
+          {
+            "group": "Document OCR",
+            "expanded": false,
+            "pages": [
+              {
+                "group": "India",
+                "expanded": false,
+                "pages": [
+                  "/api-reference/document_ocr/india/aadhaar_ocr_api",
+                  "/api-reference/document_ocr/india/pan_ocr_api",
+                  "/api-reference/document_ocr/india/driving_license_ocr_api",
+                  "/api-reference/document_ocr/india/voter_id_ocr_api",
+                  "/api-reference/document_ocr/india/passport_ocr_api",
+                  "/api-reference/document_ocr/india/bank_cheque_ocr_api",
+                  "/api-reference/document_ocr/india/gstin_certificate_ocr_api"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Mobile Number Intelligence",
+            "expanded": false,
+            "pages": [
+              "/api-reference/mobile_number_intelligence/mobile_to_name",
+              "/api-reference/mobile_number_intelligence/mobile_to_pan",
+              "/api-reference/mobile_number_intelligence/mobile_to_uan",
+              "/api-reference/mobile_number_intelligence/mobile_to_uan_list",
+              "/api-reference/mobile_number_intelligence/mobile_to_digital_age",
+              "/api-reference/mobile_number_intelligence/mobile_to_vehicle_rc",
+              "/api-reference/mobile_number_intelligence/mobile_network_details",
+              "/api-reference/mobile_number_intelligence/mobile_to_multiple_upi",
+              "/api-reference/mobile_number_intelligence/mnrl_check_api"
+            ]
+          },
+          {
+            "group": "Document Forensics",
+            "expanded": false,
+            "pages": [
+              "/api-reference/document_forensics/aadhaar_masking_api"
+            ] 
+          },
+          {
+            "group": "Face Forensics",
+            "expanded": false,
+            "pages": [
+              "/api-reference/face_forensics/face_match_api",
+              "/api-reference/face_forensics/face_match_api_v2",
+              "/api-reference/face_forensics/liveness_check_api"
+            ]
+          },
+          {
+            "group": "Async APIs",
+            "expanded": false,
+            "pages": [
+              {
+                "group": "KYC APIs",
+                "expanded": false,
+                "pages": [
+                  "/api-reference/async_apis/kyc_apis/post_voter_id_verification",
+                  "/api-reference/async_apis/kyc_apis/get_voter_id_verification",
+                  "/api-reference/async_apis/kyc_apis/post_driving_license_verification",
+                  "/api-reference/async_apis/kyc_apis/get_driving_license_verification"
+                ]
+              },
+              {
+                "group": "Transport APIs",
+                "expanded": false,
+                "pages": [
+                  "/api-reference/async_apis/transport_apis/post_vehicle_registration_verification_basic",
+                  "/api-reference/async_apis/transport_apis/get_vehicle_registration_verification_basic"
+                ]
+              },
+              {
+                "group": "MSME APIs",
+                "expanded": false,
+                "pages": [
+                  "/api-reference/async_apis/msme_apis/post_udyam_aadhaar_verification",
+                  "/api-reference/async_apis/msme_apis/get_udyam_aadhaar_verification",
+                  "/api-reference/async_apis/msme_apis/post_udyog_aadhaar_verification",
+                  "/api-reference/async_apis/msme_apis/get_udyog_aadhaar_verification"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "GST APIs",
+            "expanded": false,
+            "pages": [
+              "/api-reference/gst_apis/gstin_verification_api_basic",
+              "/api-reference/gst_apis/gstin_verification_api_advanced",
+              "/api-reference/gst_apis/pan_to_gstin_api",
+              "/api-reference/gst_apis/track_gst_return_status_api"
+            ]
+          },
+          {
+            "group": "GST Taxpayer",
+            "expanded": false,
+            "pages": [
+              "/api-reference/gst_taxpayer/generate_otp",
+              "/api-reference/gst_taxpayer/verify_otp",
+              "/api-reference/gst_taxpayer/session_expiry",
+              "/api-reference/gst_taxpayer/refresh_taxpayer_access",
+              "/api-reference/gst_taxpayer/cash_itc_balance",
+              "/api-reference/gst_taxpayer/cash_ledger",
+              "/api-reference/gst_taxpayer/itc_ledger"
+            ]
+          },
+          {
+            "group": "Business Compliance",
+            "expanded": false,
+            "pages": [
+              "/api-reference/business_compliance/fssai_verification",
+              "/api-reference/business_compliance/shop_establishment_certificate",
+              "/api-reference/business_compliance/msme_migration_status",
+              "/api-reference/business_compliance/pan_to_din",
+              "/api-reference/business_compliance/din_to_pan"
+            ]
+          },
+          {
+            "group": "Taxpayer",
+            "expanded": false,
+            "pages": [
+              "/api-reference/taxpayer/tan_verification_api",
+              "/api-reference/taxpayer/tan_verification_api_v2",
+              "/api-reference/taxpayer/tds_compliance_check_api"
+            ]
+          },
+          {
+            "group": "ITR APIs",
+            "expanded": false,
+            "pages": [
+              "/api-reference/itr_apis/create_client",
+              "/api-reference/itr_apis/download_itr_api",
+              "/api-reference/itr_apis/download_26as_api",
+              "/api-reference/itr_apis/get_itr_details_api",
+              "/api-reference/itr_apis/get_26as_details_api"
+            ]
+          },
+          {
+            "group": "MCA APIs",
+            "expanded": false,
+            "pages": [
+              "/api-reference/mca_apis/cin_verification_api",
+              "/api-reference/mca_apis/din_verification_api"
+            ]
+          },
+          {
+            "group": "MSME APIs",
+            "expanded": false,
+            "pages": [
+              "/api-reference/msme_apis/pan_udyam_msme_status_api"
+            ]
+          },
+          {
+            "group": "Financial Services",
+            "expanded": false,
+            "pages": [
+              {"group": "Credit Bureau",
+                "expanded": false,
+                "pages": [
+                  {
+                    "group": "Equifax",
+                    "expanded": false,
+                    "pages": [
+                      "/api-reference/financial_services/credit_bureau/equifax/initiate_session",
+                      "/api-reference/financial_services/credit_bureau/equifax/download_report"
+                    ]
+                  },
+                  {
+                    "group": "Experian",
+                    "expanded": false,
+                    "pages": [
+                      "/api-reference/financial_services/credit_bureau/experian/credit_report_api_v2",
+                      "/api-reference/financial_services/credit_bureau/experian/credit_report_api"
+                    ]
+                  }
+                ]
+            
+            },
+            {
+              "group": "Bank Statement Analyzer",
+              "expanded": false,
+              "pages": [
+                "/api-reference/financial_services/bank_statement_analyzer/upload_bank_statement",
+                "/api-reference/financial_services/bank_statement_analyzer/download_report"
+              ]
+            }
+            ]
+          },
+          {
+            "group": "EPFO",
+            "expanded": false,
+            "pages": [
+              "/api-reference/epfo/aadhaar_to_uan",
+              "/api-reference/epfo/pan_to_uan",
+              "/api-reference/epfo/uan_to_employment_history",
+              "/api-reference/epfo/uan_to_employment_history_v2"
+            ]
+          },
+          {
+            "group": "Bulk Validations",
+            "expanded": false,
+            "pages": [
+              "/api-reference/bulk_validations/bulk_aadhaar_validation",
+              "/api-reference/bulk_validations/bulk_pan_basic_verification",
+              "/api-reference/bulk_validations/bulk_pan_plus_verification",
+              "/api-reference/bulk_validations/bulk_mobile_to_pan_batch",
+              "/api-reference/bulk_validations/bulk_bank_account_verification",
+              "/api-reference/bulk_validations/bulk_upi_basic_verification",
+              "/api-reference/bulk_validations/bulk_search_taxpayer_by_pan",
+              "/api-reference/bulk_validations/bulk_gstin_basic_verification",
+              "/api-reference/bulk_validations/bulk_gstin_advanced_verification",
+              "/api-reference/bulk_validations/bulk_udyam_verification",
+              "/api-reference/bulk_validations/bulk_udyog_verification",
+              "/api-reference/bulk_validations/bulk_cin_verification",
+              "/api-reference/bulk_validations/get_bulk_verification_status"
+            ]
+          },
+          {
+            "group": "Reports",
+            "expanded": false,
+            "pages": [
+              "/api-reference/reports/usage_report"
+            ]
+          }
+          
             ]
           }
 
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",

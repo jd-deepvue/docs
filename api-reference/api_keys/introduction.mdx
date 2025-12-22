@@ -1,0 +1,77 @@
+---
+title: Introduction
+---
+
+Deepvue uses **API keys** to authenticate API requests. Each request to the Deepvue APIs must include a valid API key. Requests without authentication or with invalid, expired, or deleted keys will fail.
+
+If a request does not include a valid API key, Deepvue returns an **invalid request error**.  
+If a request includes a **deleted or expired key**, Deepvue returns an **authentication error**.
+
+---
+
+## Accessing Your API Keys
+
+You can find and manage your API keys from the **Deepvue Dashboard**.
+
+To access your keys:
+1. Log in to the Deepvue Dashboard
+2. Navigate to the **Credentials** section
+3. Copy your API keys for integration
+
+If you need assistance, you can also reach out to **Deepvue chat support** for help with API integration, scheduling a demo, or setting up a product walkthrough.
+
+---
+
+## API Key Types
+
+Deepvue provides different API keys depending on your account type:
+
+- **Trial account keys**  
+  Prefixed with `free_tier`
+
+- **Live account keys**  
+  Prefixed with `live` followed by your **organization ID**
+
+Use the appropriate key depending on whether you are testing or operating in a production environment.
+
+---
+
+## HTTPS Requirement
+
+<Danger>
+All API requests **must** be made over **HTTPS**.
+
+Requests made over plain HTTP will fail.  
+Requests without authentication will also fail.
+</Danger>
+
+---
+
+## Keeping Your API Keys Safe
+
+Anyone with access to your **live API key** can make API calls on behalf of your account. To protect your account, follow these best practices:
+
+- Grant access only to users who absolutely need it
+- Never store API keys in a version control system
+- Use a password manager or secrets management service
+- Do not embed API keys in client-side code such as mobile or browser applications
+- Rotate keys periodically to reduce risk
+
+---
+
+## Viewing API Request Logs
+
+You can view detailed logs of all API requests made using your keys.
+
+To access API request logs:
+1. Open the [**Deepvue Dashboard**](https://dashboard.deepvue.ai/)
+2. Click on [**API Logs**](https://dashboard.deepvue.tech/dashboard/logs)
+3. Select the required **date range** and **products**
+
+You will be redirected to the main Deepvue Dashboard where detailed request information is available.
+
+---
+
+<Info>
+API logs help you monitor usage, debug integration issues, and track request activity across your applications.
+</Info>

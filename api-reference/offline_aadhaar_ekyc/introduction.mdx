@@ -1,0 +1,67 @@
+---
+title: Introduction
+---
+
+With these APIs, users can seamlessly integrate **Offline Aadhaar eKYC** processes into their applications, ensuring a secure and simplified user identification experience.
+
+Offline Aadhaar KYC, or **OKYC**, is a legally compliant KYC method as per **UIDAI guidelines**. Your customers can provide their Aadhaar number and verify it with an OTP sent to their Aadhaar-linked mobile number to access a **downloadable XML file** containing their Aadhaar details.
+
+---
+
+## How does Offline Aadhaar Verification work?
+
+### Provide Consent
+Customers agree or disagree to continue at the initial screen before the verification process begins.
+
+### Share Aadhaar Number
+Customers provide their Aadhaar number to proceed with verification.
+
+### Verify with OTP
+An OTP is sent by UIDAI to the Aadhaar-linked mobile number. Upon successful verification, a **downloadable Aadhaar XML file** is generated using a **share code–based mechanism**.
+
+### Realtime Liveness & Face Match (Optional)
+The Aadhaar Offline XML contains **Name, Address, Photo, Gender, and Date of Birth**.  
+Optionally, the photo from the UIDAI-issued Aadhaar document can be matched with the customer’s **live photo or selfie** in real time to ensure **face match and liveness detection**.
+
+---
+
+<Danger>
+### UIDAI Compliance Notice
+
+As per UIDAI regulations, **sharing or storing Aadhaar numbers is strictly prohibited**.
+
+Service Providers **must not share, publish, or display** the Aadhaar **Share Code**, **XML file**, or **its contents** with any third party.
+
+Any non-compliance may invite action under:
+
+- Sections **17** and **25** of *The Aadhaar (Authentication) Regulations, 2016*
+- Sections **4** and **6** of *The Aadhaar (Sharing of Information) Regulations, 2016*
+- Sections **29(2)**, **29(3)**, and **37** of *The Aadhaar Act, 2016*
+
+User **consent must be mandatorily stored** by the service provider to proceed with verification.
+</Danger>
+
+
+---
+
+## Integrating Aadhaar eKYC in Your Application
+
+If you want to integrate Aadhaar eKYC into your web application or build a **customized verification workflow**, you can use the **Aadhaar eKYC APIs** detailed below.
+
+Embed the Offline Aadhaar eKYC flow to verify users on your application using a simple step-by-step process.
+
+---
+
+## Aadhaar eKYC API Flow
+
+### Initiate Session
+Initiates a verification session and returns a **captcha**, which must be solved before submitting the Aadhaar number.
+
+### Generate OTP
+Submits the Aadhaar number and triggers an OTP to the Aadhaar-linked mobile number.
+
+### Verify OTP
+Submits the OTP to Deepvue to fetch the customer’s Aadhaar information from UIDAI.
+
+### Reload Captcha (Optional)
+If the session expires or needs to be restarted, a **new captcha** can be generated using the Reload Captcha API.
