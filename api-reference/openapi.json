@@ -8,6 +8,18 @@
       "url": "https://deepvue.tech/wp-content/uploads//2022/01/deepvue-logo1-1.svg"
     }
   },
+  "servers": [
+    {
+      "url": "https://production.deepvue.tech"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": [],
+      "ApiKeyAuth": [],
+      "ClientIdAuth": []
+    }
+  ],
   "paths": {
     "/v1/verification/pan-msme-check": {
       "get": {
@@ -120,12 +132,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/gstin/gstin-by-pan/batch": {
@@ -259,12 +266,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/gstin-advanced/batch": {
@@ -398,12 +400,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/upi-basic/batch": {
@@ -537,12 +534,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/mca/cin/batch": {
@@ -676,12 +668,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/mobile-intelligence/mobile-to-pan/batch": {
@@ -815,12 +802,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/mobile-intelligence/mobile-to-vehicle-rc": {
@@ -861,12 +843,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/business-compliance/fssai-verification": {
@@ -977,12 +954,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/business-compliance/shop-establishment-certificate": {
@@ -1102,12 +1074,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/business-compliance/pan-to-din": {
@@ -1218,12 +1185,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/business-compliance/din-to-pan": {
@@ -1334,12 +1296,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/business-compliance/msme-migration-status": {
@@ -1442,12 +1399,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/business-compliance/msme-migration-status/batch": {
@@ -1498,12 +1450,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/financial-services/credit-bureau/credit-report": {
@@ -1681,12 +1628,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/epfo/uan-to-employment-history": {
@@ -1807,12 +1749,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/epfo/uan-to-employment-history/batch": {
@@ -1946,12 +1883,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/mnrl/verify": {
@@ -2075,12 +2007,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/bsa/usage": {
@@ -2131,12 +2058,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/bsa/banks-list": {
@@ -2155,12 +2077,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/bsa/upload": {
@@ -2198,12 +2115,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/bsa/download-report": {
@@ -2256,12 +2168,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/bsa/dv-sm/webhook": {
@@ -2577,11 +2484,6 @@
             }
           }
         },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ],
         "x-codeSamples": [
           {
             "lang": "cURL",
@@ -2633,12 +2535,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/aa/CheckConsentStatus": {
@@ -2687,12 +2584,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/aa/FiDataRequest": {
@@ -2768,12 +2660,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/aa/FiDataStatus": {
@@ -2840,12 +2727,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/ekyc/aadhaar/connect": {
@@ -2985,7 +2867,13 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ClientIdAuth": []
+          }
+        ]
       }
     },
     "/v1/ekyc/aadhaar/generate-otp": {
@@ -3147,7 +3035,13 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ClientIdAuth": []
+          }
+        ]
       }
     },
     "/v1/verification/bank-aadhaar-seeding/generate-otp": {
@@ -3232,12 +3126,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/bank-aadhaar-seeding/verify-otp": {
@@ -3339,12 +3228,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/ekyc/aadhaar/verify-otp": {
@@ -3515,7 +3399,13 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ClientIdAuth": []
+          }
+        ]
       }
     },
     "/v1/ekyc/aadhaar/reload-captcha": {
@@ -3656,7 +3546,13 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ClientIdAuth": []
+          }
+        ]
       }
     },
     "/v1/verification/aadhaar": {
@@ -3788,11 +3684,6 @@
             }
           }
         },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ],
         "x-codeSamples": [
           {
             "lang": "cURL",
@@ -3943,12 +3834,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/panbasic": {
@@ -4089,11 +3975,6 @@
             }
           }
         },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ],
         "x-codeSamples": [
           {
             "lang": "cURL",
@@ -4252,12 +4133,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/panadvanced": {
@@ -4398,11 +4274,6 @@
             }
           }
         },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ],
         "x-codeSamples": [
           {
             "lang": "cURL",
@@ -4559,12 +4430,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/pan-plus/batch": {
@@ -4706,12 +4572,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/pan-kra-status": {
@@ -4832,12 +4693,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/pan-aadhaar-link-status": {
@@ -4981,12 +4837,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/passport": {
@@ -5119,12 +4970,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/post-driving-license": {
@@ -5256,12 +5102,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/get-driving-license": {
@@ -5392,12 +5233,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/post-vehicle-rc": {
@@ -5520,12 +5356,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/get-vehicle-rc": {
@@ -5656,12 +5487,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/rc-advanced": {
@@ -5784,12 +5610,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/rc-challan-details": {
@@ -5900,12 +5721,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/post-voter-id": {
@@ -6028,12 +5844,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/get-voter-id": {
@@ -6164,12 +5975,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/async/post-udyam-details": {
@@ -6292,12 +6098,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/async/get-udyam-details": {
@@ -6410,12 +6211,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/async/udyam-details/batch": {
@@ -6557,12 +6353,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/async/post-udyog-details": {
@@ -6675,12 +6466,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/async/get-udyog-details": {
@@ -6793,12 +6579,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/async/udyog-details/batch": {
@@ -6940,12 +6721,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/async/post-msme-details": {
@@ -7058,12 +6834,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/async/get-msme-details": {
@@ -7184,12 +6955,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/async/msme-details/batch": {
@@ -7331,12 +7097,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/gstinlite": {
@@ -7461,11 +7222,6 @@
             }
           }
         },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ],
         "x-codeSamples": [
           {
             "lang": "cURL",
@@ -7619,12 +7375,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/gstin-advanced": {
@@ -7737,12 +7488,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/gstin/gstin-by-pan": {
@@ -7863,12 +7609,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/gstin/track-gstr": {
@@ -8001,12 +7742,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/tax-payer/tan": {
@@ -8137,12 +7873,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/tax-payer/tds/206-ab": {
@@ -8265,12 +7996,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/gst/tax-payer/generate-otp": {
@@ -8400,12 +8126,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/gst/tax-payer/verify-otp": {
@@ -8544,12 +8265,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/gst/tax-payer/session": {
@@ -8670,12 +8386,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/gst/tax-payer/refresh-session": {
@@ -8804,12 +8515,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/gst/tax-payer/ledgers/balance": {
@@ -8956,12 +8662,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/gst/tax-payer/ledgers/cash": {
@@ -9108,12 +8809,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/gst/tax-payer/ledgers/itc": {
@@ -9260,12 +8956,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/gst/returns/summary/gstr-1": {
@@ -9412,12 +9103,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/gst/returns/summary/gstr-3b": {
@@ -9564,12 +9250,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/udyogaadhaar/captcha": {
@@ -9671,12 +9352,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/udyogaadhaar/reload-captcha": {
@@ -9799,12 +9475,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/udyogaadhaar/verify": {
@@ -9953,12 +9624,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/udyamaadhaar/captcha": {
@@ -10060,12 +9726,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/udyamaadhaar/reload-captcha": {
@@ -10188,12 +9849,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/udyamaadhaar/verify": {
@@ -10342,12 +9998,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/bankaccount": {
@@ -10546,11 +10197,6 @@
             }
           }
         },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ],
         "x-codeSamples": [
           {
             "lang": "cURL",
@@ -10709,12 +10355,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/ifsc": {
@@ -10827,12 +10468,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/ifsc-code": {
@@ -10956,12 +10592,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/upi": {
@@ -11100,11 +10731,6 @@
             }
           }
         },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ],
         "x-codeSamples": [
           {
             "lang": "cURL",
@@ -11242,12 +10868,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/mobile-to-vpa": {
@@ -11370,12 +10991,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/name-match": {
@@ -11497,12 +11113,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/batch-processing-status": {
@@ -11674,12 +11285,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/liveness-check": {
@@ -11807,12 +11413,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/documents/aadhaar-masking": {
@@ -11954,12 +11555,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/documents/extraction/ind_pancard": {
@@ -12071,12 +11667,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/documents/extraction/ind_aadhaar": {
@@ -12188,12 +11779,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/documents/extraction/ind_voter_id": {
@@ -12305,12 +11891,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/documents/extraction/ind_driving_license": {
@@ -12422,12 +12003,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/documents/extraction/ind_passport": {
@@ -12539,12 +12115,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/documents/extraction/gstin-certificate": {
@@ -12656,12 +12227,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/documents/extraction/ind_bank_cheque": {
@@ -12773,12 +12339,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/documents/quality/authenticity-check": {
@@ -12901,12 +12462,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/kyc/digilocker/initiate-session": {
@@ -13026,7 +12582,13 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ClientIdAuth": []
+          }
+        ]
       }
     },
     "/v1/kyc/digilocker/access-token": {
@@ -13150,7 +12712,13 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ClientIdAuth": []
+          }
+        ]
       }
     },
     "/v1/kyc/digilocker/eaadhaar": {
@@ -13278,7 +12846,13 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ClientIdAuth": []
+          }
+        ]
       }
     },
     "/v1/kyc/digilocker/issued-files": {
@@ -13404,7 +12978,13 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ClientIdAuth": []
+          }
+        ]
       }
     },
     "/v1/kyc/digilocker/file": {
@@ -13540,7 +13120,13 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ClientIdAuth": []
+          }
+        ]
       }
     },
     "/v1/verification/mca/din": {
@@ -13661,12 +13247,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/mca/cin": {
@@ -13790,12 +13371,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/itr/create-client": {
@@ -13907,12 +13483,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/itr/itr-download": {
@@ -14024,12 +13595,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/itr/26as-download": {
@@ -14141,12 +13707,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/itr/get-itr-details": {
@@ -14267,12 +13828,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/itr/get-26as-details": {
@@ -14393,12 +13949,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/mobile-intelligence/mobile-to-name": {
@@ -14519,12 +14070,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/mobile-intelligence/mobile-to-pan": {
@@ -14653,12 +14199,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/mobile-intelligence/mobile-to-dl-details": {
@@ -14779,12 +14320,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/mobile-intelligence/mobile-to-uan": {
@@ -14913,12 +14449,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/mobile-intelligence/mobile-to-uan-list": {
@@ -15047,12 +14578,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/mobile-intelligence/mobile-to-digital-age": {
@@ -15173,12 +14699,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/mobile-intelligence/mobile-to-network-details": {
@@ -15299,12 +14820,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/mobile-intelligence/mobile-to-multiple-upi": {
@@ -15425,12 +14941,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/epfo/aadhaar-to-uan": {
@@ -15551,12 +15062,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/epfo/pan-to-uan": {
@@ -15677,12 +15183,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/financial-services/credit-bureau/credit-report-pdf": {
@@ -15860,12 +15361,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/pan-to-fathername": {
@@ -16005,12 +15501,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v1/verification/pan-to-employment-status": {
@@ -16051,12 +15542,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v2/verification/pan-plus": {
@@ -16196,12 +15682,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v2/financial-services/credit-bureau/credit-report": {
@@ -16387,12 +15868,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v2/financial-services/credit-bureau/credit-report/prefill": {
@@ -16442,12 +15918,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "OAuth2PasswordBearer": []
-          }
-        ]
+        }
       }
     },
     "/v2/financial-services/credit-bureau/credit-report/equifax": {
@@ -16499,12 +15970,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "OAuth2PasswordBearer": []
-          }
-        ]
+        }
       }
     },
     "/v2/financial-services/credit-bureau/equifax/credit-report/sdk/session": {
@@ -16544,12 +16010,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v2/financial-services/credit-bureau/credit-report/sdk/{session_id}/validate": {
@@ -16641,12 +16102,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "OAuth2PasswordBearer": []
-          }
-        ]
+        }
       }
     },
     "/v2/financial-services/credit-bureau/credit-report/sdk/verify-otp": {
@@ -16686,12 +16142,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "OAuth2PasswordBearer": []
-          }
-        ]
+        }
       }
     },
     "/v2/financial-services/credit-bureau/credit-report/sdk/report": {
@@ -16734,12 +16185,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v2/financial-services/revoke/initiate": {
@@ -16940,12 +16386,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v2/verification/epfo/uan-to-employment-history": {
@@ -17076,12 +16517,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v2/facematch": {
@@ -17206,12 +16642,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v2/verification/tax-payer/tan": {
@@ -17252,12 +16683,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v3/financial-services/credit-bureau/credit-report/prefill": {
@@ -17307,12 +16733,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "OAuth2PasswordBearer": []
-          }
-        ]
+        }
       }
     },
     "/v3/financial-services/credit-bureau/credit-report/equifax": {
@@ -17364,12 +16785,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "OAuth2PasswordBearer": []
-          }
-        ]
+        }
       }
     },
     "/v3/financial-services/credit-bureau/equifax/credit-report/sdk/session": {
@@ -17409,12 +16825,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v3/financial-services/credit-bureau/credit-report/sdk/{session_id}/validate": {
@@ -17506,12 +16917,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "OAuth2PasswordBearer": []
-          }
-        ]
+        }
       }
     },
     "/v3/financial-services/credit-bureau/credit-report/sdk/verify-otp": {
@@ -17551,12 +16957,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "OAuth2PasswordBearer": []
-          }
-        ]
+        }
       }
     },
     "/v3/financial-services/credit-bureau/credit-report/sdk/report": {
@@ -17599,12 +17000,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/v3/financial-services/revoke/initiate": {
@@ -17805,12 +17201,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Oauth2ClientCredentials": []
-          }
-        ]
+        }
       }
     },
     "/health": {
@@ -17974,7 +17365,13 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ClientIdAuth": []
+          }
+        ]
       }
     },
     "/v2/ekyc/aadhaar/verify-otp": {
@@ -18146,7 +17543,13 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ClientIdAuth": []
+          }
+        ]
       }
     },
     "/v2/ekyc/aadhaar/sdk/initiate-session": {
@@ -31830,6 +31233,12 @@
         "in": "header",
         "name": "client-id",
         "description": "Client ID issued by Deepvue"
+      },
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Access token issued by Deepvue"
       },
       "Oauth2ClientCredentials": {
         "type": "oauth2",

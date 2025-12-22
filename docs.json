@@ -88,13 +88,22 @@
               "/api-reference/kyc_apis/upi_verification",
               "/api-reference/kyc_apis/upi_advanced_verification",
               "/api-reference/kyc_apis/mobile_to_upi",
-              "/api-reference/kyc_apis/name_match"
+              "/api-reference/kyc_apis/name_match",
+              {
+                "group": "Bank Aadhaar Seeding Status",
+                "expanded": false,
+                "pages": [
+                  "/api-reference/kyc_apis/bank_aadhaar_seeding_status/generate_otp",
+                  "/api-reference/kyc_apis/bank_aadhaar_seeding_status/verify_otp"
+                ]
+              }
             ]
           },
           {
             "group": "Document OCR",
             "expanded": false,
             "pages": [
+              "api-reference/document_ocr/introduction",
               {
                 "group": "India",
                 "expanded": false,
@@ -114,6 +123,7 @@
             "group": "Mobile Number Intelligence",
             "expanded": false,
             "pages": [
+              "/api-reference/mobile_number_intelligence/introduction",
               "/api-reference/mobile_number_intelligence/mobile_to_name",
               "/api-reference/mobile_number_intelligence/mobile_to_pan",
               "/api-reference/mobile_number_intelligence/mobile_to_uan",
@@ -136,6 +146,7 @@
             "group": "Face Forensics",
             "expanded": false,
             "pages": [
+              "/api-reference/face_forensics/introduction",
               "/api-reference/face_forensics/face_match_api",
               "/api-reference/face_forensics/face_match_api_v2",
               "/api-reference/face_forensics/liveness_check_api"
@@ -145,6 +156,7 @@
             "group": "Async APIs",
             "expanded": false,
             "pages": [
+              "/api-reference/async_apis/introduction",
               {
                 "group": "KYC APIs",
                 "expanded": false,
@@ -189,6 +201,7 @@
             "group": "GST Taxpayer",
             "expanded": false,
             "pages": [
+              "/api-reference/gst_taxpayer/introduction",
               "/api-reference/gst_taxpayer/generate_otp",
               "/api-reference/gst_taxpayer/verify_otp",
               "/api-reference/gst_taxpayer/session_expiry",
@@ -213,6 +226,7 @@
             "group": "Taxpayer",
             "expanded": false,
             "pages": [
+              "/api-reference/taxpayer/introduction",
               "/api-reference/taxpayer/tan_verification_api",
               "/api-reference/taxpayer/tan_verification_api_v2",
               "/api-reference/taxpayer/tds_compliance_check_api"
@@ -248,6 +262,7 @@
             "group": "Financial Services",
             "expanded": false,
             "pages": [
+              "/api-reference/financial_services/introduction",
               {"group": "Credit Bureau",
                 "expanded": false,
                 "pages": [
@@ -331,14 +346,14 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "API Status",
+        "href": "https://status.deepvue.ai/"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://dashboard.deepvue.ai/"
     }
   },
   "contextual": {
@@ -355,9 +370,7 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "linkedin": "https://www.linkedin.com/company/godeepvue/"
     }
   }
 }

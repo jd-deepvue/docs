@@ -1,0 +1,49 @@
+---
+title: Introduction
+---
+
+The GST Taxpayer APIs are provided by the GSTN for public usage. These APIs, together, mirror the GST Portal. Therefore, you can use these APIs to integrate GST compliance into your workflow itself.
+
+Use the following workflow to access the GST Taxpayer APIs:
+
+1. The GST taxpayer is authenticated using **OTP Verification**.
+2. After successful authentication, the GST Taxpayer APIs can be accessed.
+
+### Available APIs
+
+- **Ledger APIs** – Fetch the taxpayer's ledger like:
+  - Cash ITC Balance
+  - Cash Ledger
+  - ITC Ledger
+
+- **Returns APIs** – Fetch the taxpayer's detailed summaries of **GSTR-1** and **GSTR-3B** Returns.
+
+---
+
+## Generate Otp
+
+First the taxpayer has to allow access to the GST Portal and enable it on his own GST Portal Account.
+
+Follow the following steps to do the same:
+
+1. Login to your GST Account on https://gst.gov.in
+2. Click *View Profile* on Dashboard
+3. In the *Quick Links* section, go to *Manage API Access*
+4. Set *Enable API Access Request* to **Yes**
+5. Set *Duration* to **30 days**
+
+- Once the taxpayer has enabled API access onto GST Portal, the OTP verification can be carried out.
+- First, Generate One Time Password API is called.
+- This API takes in the gstin & username as per GST Portal and then sends OTP to the phone number and email id of the GST Taxpayer.
+
+OTP Message is as follows and OTP sent will be valid for **10 minutes**.
+
+<Info title="OTP Message Sent to the Taxpayer">
+  **OTP Message Sent to the Taxpayer**
+  
+  Dear taxpayer,
+
+  &#123;&#123;OTP&#125;&#125; is the OTP to verify your GST registration: &#123;&#123;GSTIN&#125;&#125;.
+
+  OTP is valid till &#123;&#123;hh:mm:ss IST&#125;&#125;. Do not share OTP with anyone.
+</Info>
