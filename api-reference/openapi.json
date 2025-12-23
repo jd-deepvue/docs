@@ -2559,115 +2559,142 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_IDENTITY_FACEMATCH_VERIFICATION"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Face Match V1 Facematch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Face Match V1 Facematch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Face Match V1 Facematch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "415": {
-            "description": "Unsupported Media Type",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 415 Face Match V1 Facematch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_IDENTITY_FACEMATCH_NOFACE"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_IDENTITY_FACEMATCH_ERROR"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "examples": {
+          "200 - Success": {
+            "summary": "Face match successful",
+            "value": {
+              "code": null,
+              "timestamp": 1710444590759,
+              "transaction_id": "string",
+              "sub_code": "SUCCESS",
+              "message": "string",
+              "data": {
+                "match": true,
+                "confidence": null
               }
             }
           }
-        },
+        }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "examples": {
+          "400 - Inactive Client": {
+            "summary": "Inactive client",
+            "value": {
+              "detail": "Inactive client_id"
+            }
+          }
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "examples": {
+          "401 - Not Authenticated": {
+            "summary": "Not authenticated",
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "examples": {
+          "403 - Invalid Token": {
+            "summary": "Invalid token",
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        }
+      }
+    }
+  },
+  "415": {
+    "description": "Unsupported Media Type",
+    "content": {
+      "application/json": {
+        "examples": {
+          "415 - No Face Found": {
+            "summary": "No face detected",
+            "value": {
+              "code": null,
+              "timestamp": 1710444590759,
+              "transaction_id": "string",
+              "sub_code": "NO_FACE_FOUND",
+              "message": "Unable to detect face",
+              "detail": "Not able to locate any faces in at least one of the images. Check the image files."
+            }
+          },
+          "415 - Unsupported File Format": {
+            "summary": "Unsupported file format",
+            "value": {
+              "code": null,
+              "timestamp": 1710965161862,
+              "transaction_id": "string",
+              "sub_code": "UNSUPPORTED_FILE_FORMAT",
+              "message": "File format not supported",
+              "detail": "Unsupported file type, only .jpeg, .jpg, .png file formats are supported"
+            }
+          }
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Validation Error",
+    "content": {
+      "application/json": {
+        "examples": {
+          "422 - Validation Error": {
+            "summary": "Validation error",
+            "value": {
+              "detail": [
+                {
+                  "loc": ["string"],
+                  "msg": "string",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "examples": {
+          "500 - Internal Server Error": {
+            "summary": "Internal server error",
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  }
+},
         "x-codeSamples": [
           {
             "lang": "cURL",
@@ -6087,107 +6114,172 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TASK"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Async Post Driving License Verification V1 Verification Post Driving License Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Async Post Driving License Verification V1 Verification Post Driving License Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Async Post Driving License Verification V1 Verification Post Driving License Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "Service Unavailable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/TASK"
+        },
+        "examples": {
+          "Task Created": {
+            "summary": "Verification task created successfully",
+            "value": {
+              "request_id": "3d56781e-e17d-45f3-b470-c53ce8efb9bc"
             }
           }
         }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 400 Async Post Driving License Verification V1 Verification Post Driving License Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+            }
+          ]
+        },
+        "examples": {
+          "Inactive Client": {
+            "summary": "Inactive client",
+            "value": {
+              "detail": "Inactive client_id"
+            }
+          }
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 401 Async Post Driving License Verification V1 Verification Post Driving License Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+            }
+          ]
+        },
+        "examples": {
+          "Not Authenticated": {
+            "summary": "Authentication failed",
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 403 Async Post Driving License Verification V1 Verification Post Driving License Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+            }
+          ]
+        },
+        "examples": {
+          "Forbidden": {
+            "summary": "Access forbidden",
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Validation Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/HTTPValidationError"
+        },
+        "examples": {
+          "Validation Error": {
+            "summary": "Request validation failed",
+            "value": {
+              "detail": [
+                {
+                  "loc": ["string"],
+                  "msg": "string",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+        },
+        "examples": {
+          "Internal Server Error": {
+            "summary": "Internal error",
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "503": {
+    "description": "Service Unavailable",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
+        },
+        "examples": {
+          "Source Unavailable": {
+            "summary": "Source unavailable",
+            "value": {
+              "code": null,
+              "timestamp": null,
+              "transaction_id": "string",
+              "message": "Source Unavailable"
+            }
+          }
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/verification/get-driving-license": {
@@ -6210,115 +6302,224 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 200 Async Get Driving License Verification V1 Verification Get Driving License Get",
-                  "anyOf": [
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 200 Async Get Driving License Verification V1 Verification Get Driving License Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/VALID_DL"
+            },
+            {
+              "$ref": "#/components/schemas/INVALID_DL"
+            }
+          ]
+        },
+        "examples": {
+          "Valid Driving License": {
+            "summary": "Valid driving license found",
+            "value": {
+              "action": "verify_with_source",
+              "completed_at": "2025-01-28T12:34:02+05:30",
+              "created_at": "2025-01-28T12:34:01+05:30",
+              "group_id": "8e16424a-58fc-4ba4-ab20-5bc8e7c3c41e",
+              "request_id": "3d56781e-e17d-45f3-b470-c53ce8efb9bc",
+              "result": {
+                "source_output": {
+                  "address": "6, 8TH CROSS  TPS LAYOUT TP NAGAR 9TH PHASE, Bangalore North-East,Bangalore,KA",
+                  "badge_details": null,
+                  "card_serial_no": null,
+                  "city": null,
+                  "cov_details": [
                     {
-                      "$ref": "#/components/schemas/VALID_DL"
+                      "category": null,
+                      "cov": "MCWG",
+                      "issue_date": "2017-09-07"
                     },
                     {
-                      "$ref": "#/components/schemas/INVALID_DL"
+                      "category": null,
+                      "cov": "LMV",
+                      "issue_date": "2017-09-07"
                     }
-                  ]
+                  ],
+                  "date_of_issue": "2017-09-07",
+                  "date_of_last_transaction": null,
+                  "dl_status": null,
+                  "dob": "1999-06-28",
+                  "face_image": null,
+                  "gender": null,
+                  "hazardous_valid_till": null,
+                  "hill_valid_till": null,
+                  "id_number": "KA0120170526899",
+                  "issuing_rto_name": "RTO BANGALORE (CENTRAL), HSR LAYOUT",
+                  "last_transacted_at": null,
+                  "name": "MOHAMMED NIHAR",
+                  "nt_validity_from": "2017-09-07",
+                  "nt_validity_to": "2037-09-06",
+                  "relatives_name": "NOOR  MOHAMMED",
+                  "source": "government_website",
+                  "status": "id_found",
+                  "t_validity_from": null,
+                  "t_validity_to": null
                 }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Async Get Driving License Verification V1 Verification Get Driving License Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Async Get Driving License Verification V1 Verification Get Driving License Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Async Get Driving License Verification V1 Verification Get Driving License Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INVALID_REQUEST_ID"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "Service Unavailable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
-                }
-              }
+              },
+              "status": "completed",
+              "task_id": "0e4f7-0402-48de-b740-2de08b952f92",
+              "type": "ind_driving_license"
             }
           }
         }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 400 Async Get Driving License Verification V1 Verification Get Driving License Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+            }
+          ]
+        },
+        "examples": {
+          "Inactive Client": {
+            "summary": "Inactive client",
+            "value": {
+              "detail": "Inactive client_id"
+            }
+          }
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 401 Async Get Driving License Verification V1 Verification Get Driving License Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+            }
+          ]
+        },
+        "examples": {
+          "Not Authenticated": {
+            "summary": "Authentication failed",
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 403 Async Get Driving License Verification V1 Verification Get Driving License Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+            }
+          ]
+        },
+        "examples": {
+          "Forbidden": {
+            "summary": "Invalid or expired token",
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Unprocessable Entity",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INVALID_REQUEST_ID"
+        },
+        "examples": {
+          "Invalid Request ID": {
+            "summary": "Invalid request ID",
+            "value": {
+              "code": 422,
+              "timestamp": 1737920868325,
+              "transaction_id": "93e90418e224403e865e52c728e0bc8b",
+              "sub_code": "INVALID_REQUEST_ID",
+              "message": "Invalid Request ID"
+            }
+          }
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+        },
+        "examples": {
+          "Internal Server Error": {
+            "summary": "Internal error",
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "503": {
+    "description": "Service Unavailable",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
+        },
+        "examples": {
+          "Source Unavailable": {
+            "summary": "Source unavailable",
+            "value": {
+              "code": null,
+              "timestamp": null,
+              "transaction_id": "string",
+              "message": "Source Unavailable"
+            }
+          }
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/verification/post-vehicle-rc": {
@@ -6341,107 +6542,178 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TASK"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Async Post Vehicle Registration Verification V1 Verification Post Vehicle Rc Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Async Post Vehicle Registration Verification V1 Verification Post Vehicle Rc Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Async Post Vehicle Registration Verification V1 Verification Post Vehicle Rc Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "Service Unavailable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/TASK"
+        }
+      }
+    }
+  },
+  "202": {
+    "description": "Request Accepted",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Request Accepted": {
+            "value": {
+              "request_id": "26525fd1-e48e-4016-952d-387b78086ece"
             }
           }
         }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 400 Async Post Vehicle Registration Verification V1 Verification Post Vehicle Rc Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+            }
+          ]
+        },
+        "examples": {
+          "Bad Request": {
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 401 Async Post Vehicle Registration Verification V1 Verification Post Vehicle Rc Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+            }
+          ]
+        },
+        "examples": {
+          "Unauthorized": {
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 403 Async Post Vehicle Registration Verification V1 Verification Post Vehicle Rc Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+            }
+          ]
+        },
+        "examples": {
+          "Forbidden": {
+            "value": {
+              "detail": [
+                {
+                  "loc": ["string"],
+                  "msg": "string",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Validation Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/HTTPValidationError"
+        },
+        "examples": {
+          "Validation Error": {
+            "value": {
+              "detail": [
+                {
+                  "loc": ["string"],
+                  "msg": "string",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+        },
+        "examples": {
+          "Internal Server Error": {
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "503": {
+    "description": "Service Unavailable",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
+        },
+        "examples": {
+          "Source Unavailable": {
+            "value": {
+              "code": null,
+              "timestamp": null,
+              "transaction_id": "string",
+              "message": "Source Unavailable"
+            }
+          }
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/verification/get-vehicle-rc": {
@@ -6464,115 +6736,209 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 200 Async Get Vehicle Registration Verification V1 Verification Get Vehicle Rc Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/VALID_RC"
-                    },
-                    {
-                      "$ref": "#/components/schemas/INVALID_RC"
-                    }
-                  ]
-                }
-              }
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 200 Async Get Vehicle Registration Verification V1 Verification Get Vehicle Rc Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/VALID_RC"
+            },
+            {
+              "$ref": "#/components/schemas/INVALID_RC"
             }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Async Get Vehicle Registration Verification V1 Verification Get Vehicle Rc Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
+          ]
+        },
+        "examples": {
+          "Valid RC": {
+            "value": {
+              "action": "verify_with_source",
+              "completed_at": "2025-01-28T13:26:23+05:30",
+              "created_at": "2025-01-28T13:26:23+05:30",
+              "group_id": "8e16424a-58fc-4ba4-ab20-5bc8e7c3c41e",
+              "request_id": "26525fd1-e48e-4016-952d-387b78086ece",
+              "result": {
+                "extraction_output": {
+                  "avg_gross_vehicle_weight": "0",
+                  "axle_configuration": null,
+                  "chassis_number": "ME4JC735SDT039474",
+                  "color": "I RED M",
+                  "emission_norms": null,
+                  "engine_number": "JC73ET1094671",
+                  "fitness_upto": "2032-06-28",
+                  "fuel_type": "PETROL",
+                  "insurance_details": null,
+                  "insurance_validity": "2024-07-13",
+                  "maker_model": "CB125 SHINE SP CBF125MH BS4",
+                  "manufacturer": "HONDA MOTORCYCLE AND SCOOTER INDIA (P) LTD",
+                  "mv_tax_upto": "2032-06-28",
+                  "owner_name": "MOSD NIHARIKA",
+                  "owner_number": "",
+                  "permit_issue_date": null,
+                  "permit_number": "",
+                  "permit_type": "",
+                  "permit_validity": null,
+                  "puc_number_upto": null,
+                  "registration_date": "2017-06-29",
+                  "registration_number": "KA01KT4652",
+                  "rto_name": null,
+                  "status": "id_found",
+                  "unladen_weight": "118",
+                  "vehicle_class": "2WN",
+                  "vehicle_financier": ""
                 }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Async Get Vehicle Registration Verification V1 Verification Get Vehicle Rc Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Async Get Vehicle Registration Verification V1 Verification Get Vehicle Rc Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INVALID_REQUEST_ID"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "Service Unavailable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
-                }
-              }
+              },
+              "status": "completed",
+              "task_id": "7aaf3a2-7b9d-42e7-a19b-18da15a04cc6",
+              "type": "ind_rc_basic"
             }
           }
         }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 400 Async Get Vehicle Registration Verification V1 Verification Get Vehicle Rc Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+            }
+          ]
+        },
+        "examples": {
+          "Inactive Client": {
+            "value": {
+              "detail": "Inactive client_id"
+            }
+          }
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 401 Async Get Vehicle Registration Verification V1 Verification Get Vehicle Rc Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+            }
+          ]
+        },
+        "examples": {
+          "Unauthorized": {
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 403 Async Get Vehicle Registration Verification V1 Verification Get Vehicle Rc Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+            }
+          ]
+        },
+        "examples": {
+          "Forbidden": {
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Unprocessable Entity",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INVALID_REQUEST_ID"
+        },
+        "examples": {
+          "Invalid Request ID": {
+            "value": {
+              "code": 422,
+              "timestamp": 1738007666043,
+              "transaction_id": "ad0f216d6bfe496f943cbbec47d07426",
+              "sub_code": "INVALID_REQUEST_ID",
+              "message": "Invalid Request ID"
+            }
+          }
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+        },
+        "examples": {
+          "Internal Server Error": {
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "503": {
+    "description": "Service Unavailable",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
+        },
+        "examples": {
+          "Source Unavailable": {
+            "value": {
+              "code": null,
+              "timestamp": null,
+              "transaction_id": "string",
+              "message": "Source Unavailable"
+            }
+          }
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/verification/rc-advanced": {
@@ -7019,107 +7385,169 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TASK"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Async Post Voter Id Verification V1 Verification Post Voter Id Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Async Post Voter Id Verification V1 Verification Post Voter Id Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Async Post Voter Id Verification V1 Verification Post Voter Id Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "Service Unavailable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
+  "202": {
+    "description": "Request Accepted",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Task Created": {
+            "summary": "Async verification task created",
+            "value": {
+              "request_id": "fbbbd62c-7244-460f-92f4-f9702693200e"
             }
           }
         }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Inactive Client": {
+            "summary": "Inactive client",
+            "value": {
+              "detail": "Inactive client_id"
+            }
+          }
+        },
+        "schema": {
+          "title": "Response 400 Async Post Voter Id Verification V1 Verification Post Voter Id Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Not Authenticated": {
+            "summary": "Not authenticated",
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        },
+        "schema": {
+          "title": "Response 401 Async Post Voter Id Verification V1 Verification Post Voter Id Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Invalid Token": {
+            "summary": "Invalid token",
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        },
+        "schema": {
+          "title": "Response 403 Async Post Voter Id Verification V1 Verification Post Voter Id Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Validation Error",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Validation Error": {
+            "summary": "Request validation failed",
+            "value": {
+              "detail": [
+                {
+                  "loc": ["string"],
+                  "msg": "string",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "schema": {
+          "$ref": "#/components/schemas/HTTPValidationError"
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Internal Server Error": {
+            "summary": "Internal server error",
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        },
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+        }
+      }
+    }
+  },
+  "503": {
+    "description": "Service Unavailable",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Source Unavailable": {
+            "summary": "Source unavailable",
+            "value": {
+              "code": null,
+              "timestamp": null,
+              "transaction_id": "string",
+              "message": "Source Unavailable"
+            }
+          }
+        },
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/verification/get-voter-id": {
@@ -7142,115 +7570,202 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 200 Async Get Voter Id Verification V1 Verification Get Voter Id Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/VALID_VOTER_ID"
-                    },
-                    {
-                      "$ref": "#/components/schemas/INVALID_VOTER_ID"
-                    }
-                  ]
-                }
-              }
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 200 Async Get Voter Id Verification V1 Verification Get Voter Id Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/VALID_VOTER_ID"
+            },
+            {
+              "$ref": "#/components/schemas/INVALID_VOTER_ID"
             }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Async Get Voter Id Verification V1 Verification Get Voter Id Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Async Get Voter Id Verification V1 Verification Get Voter Id Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Async Get Voter Id Verification V1 Verification Get Voter Id Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INVALID_REQUEST_ID"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "Service Unavailable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
+          ]
+        },
+        "examples": {
+          "Valid Voter ID": {
+            "summary": "Voter ID found and verified",
+            "value": {
+              "action": "verify_with_source",
+              "completed_at": "2025-01-31T12:21:15+05:30",
+              "created_at": "2025-01-31T12:21:14+05:30",
+              "group_id": "8e16424a-58fc-4ba4-ab20-5bc8e7c3c41e",
+              "request_id": "f84f8dd0-b4fc-4c76-92a1-a852a0a48246",
+              "task_id": "1f2627e7-a914-4e48-85f8-f58450e91687",
+              "type": "ind_voter_id",
+              "status": "completed",
+              "result": {
+                "source_output": {
+                  "ac_no": "175",
+                  "district": "B.B.M.P(SOUTH)",
+                  "gender": "M",
+                  "id_number": "UHN152632",
+                  "name_on_card": "mosd niharika",
+                  "part_no": "21",
+                  "ps_name": "NARAYANA B TECNOLOGY SCHOOL 40/1 TP NAGAR 9TH PHASE 24TH MAIN ROAD BOB COLONY ROOM NO -02",
+                  "rln_name": "KIND MOHUED",
+                  "section_no": "5",
+                  "source": "NVSP",
+                  "st_code": "S10",
+                  "state": "Karnataka",
+                  "status": "id_found"
                 }
               }
             }
           }
         }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Inactive Client": {
+            "summary": "Inactive client",
+            "value": {
+              "detail": "Inactive client_id"
+            }
+          }
+        },
+        "schema": {
+          "title": "Response 400 Async Get Voter Id Verification V1 Verification Get Voter Id Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Not Authenticated": {
+            "summary": "Authentication failed",
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        },
+        "schema": {
+          "title": "Response 401 Async Get Voter Id Verification V1 Verification Get Voter Id Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Forbidden": {
+            "summary": "Access forbidden",
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        },
+        "schema": {
+          "title": "Response 403 Async Get Voter Id Verification V1 Verification Get Voter Id Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Unprocessable Entity",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Invalid Request ID": {
+            "summary": "Invalid request id",
+            "value": {
+              "code": 422,
+              "timestamp": 1738183355777,
+              "transaction_id": "2d45f642ee2b4c3fbb96c88dadb78c86",
+              "sub_code": "INVALID_REQUEST_ID",
+              "message": "Invalid Request ID"
+            }
+          }
+        },
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INVALID_REQUEST_ID"
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Internal Server Error": {
+            "summary": "Internal error",
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        },
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+        }
+      }
+    }
+  },
+  "503": {
+    "description": "Service Unavailable",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Source Unavailable": {
+            "summary": "Source unavailable",
+            "value": {
+              "code": null,
+              "timestamp": null,
+              "transaction_id": "string",
+              "message": "Source Unavailable"
+            }
+          }
+        },
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/verification/async/post-udyam-details": {
@@ -7273,107 +7788,167 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TASK"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Async Post Udyam Aadhaar Verification V1 Verification Async Post Udyam Details Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Async Post Udyam Aadhaar Verification V1 Verification Async Post Udyam Details Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Async Post Udyam Aadhaar Verification V1 Verification Async Post Udyam Details Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "Service Unavailable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/TASK"
+        },
+        "examples": {
+          "Request Accepted": {
+            "value": {
+              "request_id": "57a2af96-faa4-4289-9be4-bbe4f07c0132"
             }
           }
         }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 400 Async Post Udyam Aadhaar Verification V1 Verification Async Post Udyam Details Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+            }
+          ]
+        },
+        "examples": {
+          "Inactive Client": {
+            "value": {
+              "detail": "Inactive client_id"
+            }
+          }
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 401 Async Post Udyam Aadhaar Verification V1 Verification Async Post Udyam Details Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+            }
+          ]
+        },
+        "examples": {
+          "Unauthorized": {
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 403 Async Post Udyam Aadhaar Verification V1 Verification Async Post Udyam Details Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+            }
+          ]
+        },
+        "examples": {
+          "Forbidden": {
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Validation Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/HTTPValidationError"
+        },
+        "examples": {
+          "Validation Error": {
+            "value": {
+              "detail": [
+                {
+                  "loc": [
+                    "string"
+                  ],
+                  "msg": "string",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+        },
+        "examples": {
+          "Internal Server Error": {
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "503": {
+    "description": "Service Unavailable",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_AADHAAR_BASIC_VERIFICATION_SOURCE_UNAVAILABLE"
+        },
+        "examples": {
+          "Source Unavailable": {
+            "value": {
+              "code": null,
+              "timestamp": null,
+              "transaction_id": "string",
+              "message": "Source Unavailable"
+            }
+          }
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/verification/async/get-udyam-details": {
@@ -7396,97 +7971,152 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_ASYNC_UDYAM_AADHAAR"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Async Get Udyam Aadhaar Verification V1 Verification Async Get Udyam Details Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Async Get Udyam Aadhaar Verification V1 Verification Async Get Udyam Details Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Async Get Udyam Aadhaar Verification V1 Verification Async Get Udyam Details Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INVALID_REQUEST_ID"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
-              }
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_ASYNC_UDYAM_AADHAAR"
+        },
+        "examples": {
+          "Verification Failed": {
+            "value": {
+              "action": "verify_with_source",
+              "completed_at": "2025-01-30T14:00:55+05:30",
+              "created_at": "2025-01-30T14:00:33+05:30",
+              "error": "BAD_REQUEST",
+              "group_id": "8e16424a-58fc-4ba4-ab20-5bc8e7c3c41e",
+              "message": "Please enter a valid UAM number",
+              "request_id": "2db0ab31-ce7c-47f3-8488-f2298fc2a811",
+              "status": "failed",
+              "task_id": "3431c00d-64f7-47c4-acf5-55620d37beeb",
+              "type": "udyam_aadhaar"
             }
           }
         }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 400 Async Get Udyam Aadhaar Verification V1 Verification Async Get Udyam Details Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+            }
+          ]
+        },
+        "examples": {
+          "Bad Request": {
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 401 Async Get Udyam Aadhaar Verification V1 Verification Async Get Udyam Details Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+            }
+          ]
+        },
+        "examples": {
+          "Unauthorized": {
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 403 Async Get Udyam Aadhaar Verification V1 Verification Async Get Udyam Details Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+            }
+          ]
+        },
+        "examples": {
+          "Forbidden": {
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Unprocessable Entity",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INVALID_REQUEST_ID"
+        },
+        "examples": {
+          "Invalid Request ID": {
+            "value": {
+              "code": 422,
+              "timestamp": 1738210582933,
+              "transaction_id": "cec77f6594414f32a3947abc60bc04e1",
+              "sub_code": "INVALID_REQUEST_ID",
+              "message": "Invalid Request ID"
+            }
+          }
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+        },
+        "examples": {
+          "Internal Server Error": {
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/verification/async/udyam-details/batch": {
@@ -7651,97 +8281,145 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TASK"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Async Post Udyog Aadhaar Verification V1 Verification Async Post Udyog Details Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Async Post Udyog Aadhaar Verification V1 Verification Async Post Udyog Details Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Async Post Udyog Aadhaar Verification V1 Verification Async Post Udyog Details Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/TASK"
+        },
+        "examples": {
+          "Verification Initiated": {
+            "value": {
+              "request_id": "string"
             }
           }
         }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 400 Async Post Udyog Aadhaar Verification V1 Verification Async Post Udyog Details Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+            }
+          ]
+        },
+        "examples": {
+          "Inactive Client": {
+            "value": {
+              "detail": "Inactive client_id"
+            }
+          }
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 401 Async Post Udyog Aadhaar Verification V1 Verification Async Post Udyog Details Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+            }
+          ]
+        },
+        "examples": {
+          "Unauthorized": {
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 403 Async Post Udyog Aadhaar Verification V1 Verification Async Post Udyog Details Post",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+            }
+          ]
+        },
+        "examples": {
+          "Forbidden": {
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Validation Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/HTTPValidationError"
+        },
+        "examples": {
+          "Validation Error": {
+            "value": {
+              "detail": [
+                {
+                  "loc": ["string"],
+                  "msg": "string",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+        },
+        "examples": {
+          "Internal Server Error": {
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/verification/async/get-udyog-details": {
@@ -7764,97 +8442,152 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_ASYNC_UDYOG_AADHAAR"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Async Get Udyog Aadhaar Verification V1 Verification Async Get Udyog Details Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Async Get Udyog Aadhaar Verification V1 Verification Async Get Udyog Details Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Async Get Udyog Aadhaar Verification V1 Verification Async Get Udyog Details Get",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INVALID_REQUEST_ID"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
-              }
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_ASYNC_UDYOG_AADHAAR"
+        },
+        "examples": {
+          "Verification Failed": {
+            "value": {
+              "action": "verify_with_source",
+              "completed_at": "2025-01-30T14:00:55+05:30",
+              "created_at": "2025-01-30T14:00:33+05:30",
+              "error": "BAD_REQUEST",
+              "group_id": "8e16424a-58fc-4ba4-ab20-5bc8e7c3c41e",
+              "message": "Please enter a valid UAM number",
+              "request_id": "2db0ab31-ce7c-47f3-8488-f2298fc2a811",
+              "status": "failed",
+              "task_id": "3431c00d-64f7-47c4-acf5-55620d37beeb",
+              "type": "udyam_aadhaar"
             }
           }
         }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 400 Async Get Udyog Aadhaar Verification V1 Verification Async Get Udyog Details Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+            }
+          ]
+        },
+        "examples": {
+          "Inactive Client": {
+            "value": {
+              "detail": "Inactive client_id"
+            }
+          }
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 401 Async Get Udyog Aadhaar Verification V1 Verification Async Get Udyog Details Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+            }
+          ]
+        },
+        "examples": {
+          "Unauthorized": {
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 403 Async Get Udyog Aadhaar Verification V1 Verification Async Get Udyog Details Get",
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+            },
+            {
+              "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+            }
+          ]
+        },
+        "examples": {
+          "Forbidden": {
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Unprocessable Entity",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INVALID_REQUEST_ID"
+        },
+        "examples": {
+          "Invalid Request ID": {
+            "value": {
+              "code": 422,
+              "timestamp": 1738183355076,
+              "transaction_id": "08eb4011796f4e269dc8b5b7ab28ddbd",
+              "sub_code": "INVALID_REQUEST_ID",
+              "message": "Invalid Request ID"
+            }
+          }
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+        },
+        "examples": {
+          "Internal Server Error": {
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/verification/async/udyog-details/batch": {
@@ -13133,113 +13866,133 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 200 Liveness Check V1 Liveness Check Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_LIVENESS_CHECK_SUCCESSFUL"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_LIVENESS_FACE_NOT_DETECTED"
-                    }
-                  ]
-                }
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Liveness Successful": {
+            "summary": "Liveness check successful",
+            "value": {
+              "code": 200,
+              "timestamp": null,
+              "transaction_id": "string",
+              "sub_code": "SUCCESS",
+              "message": "Request processed successfully",
+              "data": {
+                "is_live": true,
+                "score": null
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Liveness Check V1 Liveness Check Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Liveness Check V1 Liveness Check Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Liveness Check V1 Liveness Check Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Liveness Check V1 Liveness Check Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_LIVENESS_INVALID_URL"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_LIVENESS_INVALID_BASE64_STRING"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_LIVENESS_INTERNAL_SERVER_ERROR"
-                }
-              }
+          "Face Not Detected": {
+            "summary": "Face not detected in image",
+            "value": {
+              "code": 200,
+              "timestamp": null,
+              "transaction_id": "string",
+              "sub_code": "FACE_NOT_DETECTED",
+              "message": "Face Not Detected"
             }
           }
         }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Inactive Client": {
+            "summary": "Inactive client",
+            "value": {
+              "detail": "Inactive client_id"
+            }
+          }
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Not Authenticated": {
+            "summary": "Not authenticated",
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Invalid Token": {
+            "summary": "Invalid token",
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Unprocessable Entity",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Invalid URL": {
+            "summary": "Invalid URL",
+            "value": {
+              "code": 422,
+              "timestamp": null,
+              "transaction_id": "string",
+              "sub_code": "INVALID_URL",
+              "message": "Invalid URL"
+            }
+          },
+          "Invalid Base64 String": {
+            "summary": "Invalid base64 string",
+            "value": {
+              "code": 422,
+              "timestamp": null,
+              "transaction_id": "string",
+              "sub_code": "INVALID_BASE64_STRING",
+              "message": "Invalid base64 string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Internal Server Error": {
+            "summary": "Internal server error",
+            "value": {
+              "code": 500,
+              "timestamp": null,
+              "transaction_id": "string",
+              "sub_code": "INTERNAL_SERVER_ERROR",
+              "message": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/documents/aadhaar-masking": {
@@ -13261,127 +14014,152 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 200 Aadhaar Masking V1 Documents Aadhaar Masking Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AADHAAR_MASKING_SUCCESSFUL"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AADHAAR_MASKING_NO_ID_FOUND"
-                    }
-                  ]
-                }
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "examples": {
+          "200 - Success": {
+            "summary": "Document Masked Successfully",
+            "value": {
+              "code": 200,
+              "timestamp": null,
+              "transaction_id": "string",
+              "sub_code": "SUCCESS",
+              "message": "Document Masked Successfully",
+              "data": {
+                "masked_document": "string"
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Aadhaar Masking V1 Documents Aadhaar Masking Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Aadhaar Masking V1 Documents Aadhaar Masking Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Aadhaar Masking V1 Documents Aadhaar Masking Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Aadhaar Masking V1 Documents Aadhaar Masking Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_NO_CONSENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_IMAGE"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_EMPTY_DOCUMENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_LIVENESS_INVALID_URL"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 500 Aadhaar Masking V1 Documents Aadhaar Masking Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/DEEPVUE_INTERNAL_SERVER_ERROR"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AADHAAR_MASKING_NOT_PROCESSED"
-                    }
-                  ]
-                }
-              }
+          "200 - Invalid Document": {
+            "summary": "Invalid ID Card",
+            "value": {
+              "code": 200,
+              "timestamp": null,
+              "transaction_id": "string",
+              "sub_code": "INVALID_DOCUMENT",
+              "message": "Invalid ID Card, ID number not found."
             }
           }
         }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "examples": {
+          "400 - Inactive Client": {
+            "summary": "Inactive client",
+            "value": {
+              "detail": "Inactive client_id"
+            }
+          }
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "examples": {
+          "401 - Not Authenticated": {
+            "summary": "Not authenticated",
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "examples": {
+          "403 - Invalid Token": {
+            "summary": "Invalid token",
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Unprocessable Entity",
+    "content": {
+      "application/json": {
+        "examples": {
+          "422 - No Consent": {
+            "summary": "Consent not taken",
+            "value": {
+              "code": 422,
+              "timestamp": 1711487837359,
+              "transaction_id": "string",
+              "sub_code": "NO_CONSENT",
+              "message": "Consent not taken"
+            }
+          },
+          "422 - Invalid Image": {
+            "summary": "Invalid image",
+            "value": {
+              "code": 422,
+              "timestamp": 1711487837359,
+              "transaction_id": "string",
+              "sub_code": "INVALID_IMAGE",
+              "message": "Image is non compliant to request/quality standard"
+            }
+          },
+          "422 - Empty Document": {
+            "summary": "Empty document",
+            "value": {
+              "code": 422,
+              "timestamp": 1711487837359,
+              "transaction_id": "string",
+              "sub_code": "EMPTY_DOCUMENT",
+              "message": "Empty document. Valid base64 or URL is required."
+            }
+          },
+          "422 - Invalid URL": {
+            "summary": "Invalid URL",
+            "value": {
+              "code": 422,
+              "timestamp": null,
+              "transaction_id": "string",
+              "sub_code": "INVALID_URL",
+              "message": "Invalid URL"
+            }
+          }
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "examples": {
+          "500 - Internal Server Error": {
+            "summary": "Internal server error",
+            "value": {
+              "code": 500,
+              "timestamp": null,
+              "transaction_id": "string",
+              "sub_code": "INTERNAL_SERVER_ERROR",
+              "message": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/documents/extraction/ind_pancard": {
@@ -17990,6 +18768,7 @@
     }
   },
 
+
   "422": {
     "description": "Unprocessable Entity",
     "content": {
@@ -19995,111 +20774,153 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseFaceMatchSuccess"
-                }
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Face Match - Match True": {
+            "summary": "Face match successful",
+            "value": {
+              "code": 200,
+              "sub_code": "SUCCESS",
+              "message": "Face match completed.",
+              "transaction_id": "24d4cc25-d576-4bfd-ac6a-43c5f770248d",
+              "data": {
+                "match": true,
+                "confidence": 98
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Face Match V2 V2 Facematch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Face Match V2 V2 Facematch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Face Match V2 V2 Facematch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Face Match V2 V2 Facematch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/ResponseNoFaceDetected"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ResponseInvalidFileType"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ResponseInvalidPdf"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ResponseInvalidImage"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DEEPVUE_INTERNAL_SERVER_ERROR"
-                }
+          "Face Match - Match False": {
+            "summary": "Face match failed",
+            "value": {
+              "code": 200,
+              "sub_code": "SUCCESS",
+              "message": "Face match completed.",
+              "transaction_id": "ca6d5795-b806-4a1d-b158-e889d2b53ee3",
+              "data": {
+                "match": false,
+                "confidence": 44
               }
             }
           }
         }
+      }
+    }
+  },
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Inactive Client": {
+            "summary": "Inactive client",
+            "value": {
+              "detail": "Inactive client_id"
+            }
+          }
+        }
+      }
+    }
+  },
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Not Authenticated": {
+            "summary": "Not authenticated",
+            "value": {
+              "detail": "Not authenticated"
+            }
+          }
+        }
+      }
+    }
+  },
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Invalid Token": {
+            "summary": "Invalid token",
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        }
+      }
+    }
+  },
+  "422": {
+    "description": "Unprocessable Entity",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Unsupported File Format": {
+            "summary": "Unsupported file format",
+            "value": {
+              "code": 422,
+              "timestamp": 1745915278802,
+              "transaction_id": "f76d1ec7abb446f690e1a4bfd8ff210f",
+              "sub_code": "UNSUPPORTED_FILE_FORMAT",
+              "message": "Please upload a valid PDF or image file."
+            }
+          },
+          "No Face Detected": {
+            "summary": "No face detected",
+            "value": {
+              "code": 422,
+              "timestamp": 1745915335416,
+              "transaction_id": "4a3f51617dce4f87820910d715d4fbfb",
+              "sub_code": "NO_FACE_DETECTED",
+              "message": "No faces detected in the provided files."
+            }
+          },
+          "Invalid PDF": {
+            "summary": "Invalid PDF",
+            "value": {
+              "code": 422,
+              "timestamp": 1745916318378,
+              "transaction_id": "6701c248200d4f06ab8ee1bebc38de59",
+              "sub_code": "INVALID_PDF",
+              "message": "Could not process uploaded PDF."
+            }
+          },
+          "Validation Error": {
+            "summary": "Schema validation error",
+            "value": {
+              "detail": [
+                {
+                  "loc": ["string"],
+                  "msg": "string",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "examples": {
+          "Internal Server Error": {
+            "summary": "Internal server error",
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v2/verification/tax-payer/tan": {
