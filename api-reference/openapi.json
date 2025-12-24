@@ -165,108 +165,203 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
-                }
-              }
-            }
+    "201": {
+      "description": "Successful Response",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Bulk Search Taxpayer By Pan V1 Verification Gstin Gstin By Pan Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Bulk Search Taxpayer By Pan V1 Verification Gstin Gstin By Pan Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Bulk Search Taxpayer By Pan V1 Verification Gstin Gstin By Pan Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Bulk Search Taxpayer By Pan V1 Verification Gstin Gstin By Pan Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_PAN_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
+          "examples": {
+            "201 - GSTIN By PAN Batch Processing Initiated": {
+              "value": {
+                "code": 201,
+                "timestamp": 1948475859595,
+                "transaction_id": "string",
+                "request_id": "string",
+                "message": "batch processing in progress",
+                "sub_code": "SUCCESS",
+                "output_batch_file": "https://bulk-data-processing.s3.ap-south-1.amazonaws.com/mobile-to-pan-batch-output-files/file.csv"
               }
             }
           }
         }
+      }
+    },
+    "400": {
+      "description": "Bad Request",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 400 Bulk Search Taxpayer By Pan V1 Verification Gstin Gstin By Pan Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+              }
+            ]
+          },
+          "examples": {
+            "400 - Inactive Client": {
+              "value": {
+                "detail": "Inactive client_id"
+              }
+            },
+            "400 - Bad Request": {
+              "value": {
+                "detail": "Bad Request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "401": {
+      "description": "Unauthorized",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 401 Bulk Search Taxpayer By Pan V1 Verification Gstin Gstin By Pan Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+              }
+            ]
+          },
+          "examples": {
+            "401 - Not Authenticated": {
+              "value": {
+                "detail": "Not authenticated"
+              }
+            },
+            "401 - Invalid Client": {
+              "value": {
+                "detail": "Invalid client_id, access Denied"
+              }
+            },
+            "401 - Credential Validation Failed": {
+              "value": {
+                "detail": "Could not validate credentials"
+              }
+            },
+            "401 - Incorrect Client Credentials": {
+              "value": {
+                "detail": "Incorrect client_id or client_secret"
+              }
+            }
+          }
+        }
+      }
+    },
+    "403": {
+      "description": "Forbidden",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 403 Bulk Search Taxpayer By Pan V1 Verification Gstin Gstin By Pan Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+              }
+            ]
+          },
+          "examples": {
+            "403 - Invalid Token": {
+              "value": {
+                "detail": "Not a valid token"
+              }
+            },
+            "403 - Access Forbidden": {
+              "value": {
+                "detail": "Access forbidden"
+              }
+            }
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 422 Bulk Search Taxpayer By Pan V1 Verification Gstin Gstin By Pan Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_PAN_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
+              }
+            ]
+          },
+          "examples": {
+            "422 - Invalid Batch File Format": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271522,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_FILE_FORMAT",
+                "message": "File format not supported"
+              }
+            },
+            "422 - Batch Size Limit Exceeded": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271509,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_SIZE",
+                "message": "Input File must have less than 1000 records"
+              }
+            },
+            "422 - Invalid PAN File Headers": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271518,
+                "transaction_id": "string",
+                "sub_code": "INVALID_INPUT_FILE_FORMAT",
+                "message": "Input File must have 'pan_number' only as headers"
+              }
+            }
+          }
+        }
+      }
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+          },
+          "examples": {
+            "500 - Internal Server Error": {
+              "value": {
+                "detail": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
       }
     },
     "/v1/verification/gstin-advanced/batch": {
@@ -299,108 +394,203 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
-                }
-              }
-            }
+    "201": {
+      "description": "Successful Response",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Bulk Gstin Advanced Verification V1 Verification Gstin Advanced Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Bulk Gstin Advanced Verification V1 Verification Gstin Advanced Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Bulk Gstin Advanced Verification V1 Verification Gstin Advanced Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Bulk Gstin Advanced Verification V1 Verification Gstin Advanced Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_GSTIN_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
+          "examples": {
+            "201 - GSTIN Advanced Batch Processing Initiated": {
+              "value": {
+                "code": 201,
+                "timestamp": 1948475859595,
+                "transaction_id": "string",
+                "request_id": "string",
+                "message": "batch processing in progress",
+                "sub_code": "SUCCESS",
+                "output_batch_file": "https://bulk-data-processing.s3.ap-south-1.amazonaws.com/mobile-to-pan-batch-output-files/file.csv"
               }
             }
           }
         }
+      }
+    },
+    "400": {
+      "description": "Bad Request",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 400 Bulk Gstin Advanced Verification V1 Verification Gstin Advanced Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+              }
+            ]
+          },
+          "examples": {
+            "400 - Inactive Client": {
+              "value": {
+                "detail": "Inactive client_id"
+              }
+            },
+            "400 - Bad Request": {
+              "value": {
+                "detail": "Bad Request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "401": {
+      "description": "Unauthorized",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 401 Bulk Gstin Advanced Verification V1 Verification Gstin Advanced Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+              }
+            ]
+          },
+          "examples": {
+            "401 - Not Authenticated": {
+              "value": {
+                "detail": "Not authenticated"
+              }
+            },
+            "401 - Invalid Client": {
+              "value": {
+                "detail": "Invalid client_id, access Denied"
+              }
+            },
+            "401 - Credential Validation Failed": {
+              "value": {
+                "detail": "Could not validate credentials"
+              }
+            },
+            "401 - Incorrect Client Credentials": {
+              "value": {
+                "detail": "Incorrect client_id or client_secret"
+              }
+            }
+          }
+        }
+      }
+    },
+    "403": {
+      "description": "Forbidden",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 403 Bulk Gstin Advanced Verification V1 Verification Gstin Advanced Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+              }
+            ]
+          },
+          "examples": {
+            "403 - Invalid Token": {
+              "value": {
+                "detail": "Not a valid token"
+              }
+            },
+            "403 - Access Forbidden": {
+              "value": {
+                "detail": "Access forbidden"
+              }
+            }
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 422 Bulk Gstin Advanced Verification V1 Verification Gstin Advanced Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_GSTIN_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
+              }
+            ]
+          },
+          "examples": {
+            "422 - Invalid Batch File Format": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271522,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_FILE_FORMAT",
+                "message": "File format not supported"
+              }
+            },
+            "422 - Batch Size Limit Exceeded": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271509,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_SIZE",
+                "message": "Input File must have less than 1000 records"
+              }
+            },
+            "422 - Invalid GSTIN File Headers": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271518,
+                "transaction_id": "string",
+                "sub_code": "INVALID_INPUT_FILE_FORMAT",
+                "message": "Input File must have 'gstin_number' only as headers"
+              }
+            }
+          }
+        }
+      }
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+          },
+          "examples": {
+            "500 - Internal Server Error": {
+              "value": {
+                "detail": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
       }
     },
     "/v1/verification/upi-basic/batch": {
@@ -433,108 +623,203 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
-                }
-              }
-            }
+    "201": {
+      "description": "Successful Response",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Upi Basic Verification Batch V1 Verification Upi Basic Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Upi Basic Verification Batch V1 Verification Upi Basic Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Upi Basic Verification Batch V1 Verification Upi Basic Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Upi Basic Verification Batch V1 Verification Upi Basic Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UPI_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
+          "examples": {
+            "201 - UPI Basic Batch Processing Initiated": {
+              "value": {
+                "code": 201,
+                "timestamp": 1732002740983,
+                "transaction_id": "4e8bb5ec29f34b9cb336ece4d771c64e",
+                "request_id": "4e8bb5ec29f34b9cb336ece4d771c64e",
+                "message": "batch processing in progress",
+                "sub_code": "SUCCESS",
+                "output_batch_file": ""
               }
             }
           }
         }
+      }
+    },
+    "400": {
+      "description": "Bad Request",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 400 Upi Basic Verification Batch V1 Verification Upi Basic Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+              }
+            ]
+          },
+          "examples": {
+            "400 - Inactive Client": {
+              "value": {
+                "detail": "Inactive client_id"
+              }
+            },
+            "400 - Bad Request": {
+              "value": {
+                "detail": "Bad Request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "401": {
+      "description": "Unauthorized",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 401 Upi Basic Verification Batch V1 Verification Upi Basic Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+              }
+            ]
+          },
+          "examples": {
+            "401 - Not Authenticated": {
+              "value": {
+                "detail": "Not authenticated"
+              }
+            },
+            "401 - Invalid Client": {
+              "value": {
+                "detail": "Invalid client_id, access Denied"
+              }
+            },
+            "401 - Credential Validation Failed": {
+              "value": {
+                "detail": "Could not validate credentials"
+              }
+            },
+            "401 - Incorrect Client Credentials": {
+              "value": {
+                "detail": "Incorrect client_id or client_secret"
+              }
+            }
+          }
+        }
+      }
+    },
+    "403": {
+      "description": "Forbidden",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 403 Upi Basic Verification Batch V1 Verification Upi Basic Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+              }
+            ]
+          },
+          "examples": {
+            "403 - Invalid Token": {
+              "value": {
+                "detail": "Not a valid token"
+              }
+            },
+            "403 - Access Forbidden": {
+              "value": {
+                "detail": "Access forbidden"
+              }
+            }
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 422 Upi Basic Verification Batch V1 Verification Upi Basic Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_UPI_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
+              }
+            ]
+          },
+          "examples": {
+            "422 - Invalid Batch File Format": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271522,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_FILE_FORMAT",
+                "message": "File format not supported"
+              }
+            },
+            "422 - Batch Size Limit Exceeded": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271509,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_SIZE",
+                "message": "Input File must have less than 1000 records"
+              }
+            },
+            "422 - Invalid UPI File Headers": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271518,
+                "transaction_id": "string",
+                "sub_code": "INVALID_INPUT_FILE_FORMAT",
+                "message": "Input File must have 'upi_id' only as headers"
+              }
+            }
+          }
+        }
+      }
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+          },
+          "examples": {
+            "500 - Internal Server Error": {
+              "value": {
+                "detail": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
       }
     },
     "/v1/verification/mca/cin/batch": {
@@ -567,108 +852,185 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
-                }
+  "201": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 200 Get Bulk Verification Status V1 Verification Batch Processing Status Get",
+          "anyOf": [
+            { "$ref": "#/components/schemas/BAV_SUCCESSFUL" },
+            { "$ref": "#/components/schemas/BAV_INVALID_ACCTNO_OR_IFSC" },
+            { "$ref": "#/components/schemas/BAV_ACCT_BLOCKED" },
+            { "$ref": "#/components/schemas/BAV_INVALID_IFSC" },
+            { "$ref": "#/components/schemas/BAV_NRE_ACCOUNT" }
+          ]
+        },
+        "examples": {
+          "200 - Batch Processing Completed": {
+            "value": {
+              "transaction_id": "51cd8b6ab36d46a98afb2f01e856e89a",
+              "timestamp": 1732088933797,
+              "code": 200,
+              "message": "Batch Upload status fetched successfully",
+              "sub_code": "SUCCESS",
+              "data": {
+                "request_id": "06d0d7c340ed460d96103aaa0b26f0de",
+                "status": 200,
+                "product_id": "",
+                "message": "batch processing completed",
+                "batch_output_file_url": "https://bulk-data-processing.s3.ap-south-1.amazonaws.com/upi-basic-batch-output-files/06d0d7c340ed460d96103aaa0b26f0de.csv"
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Cin Verification Batch V1 Verification Mca Cin Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Cin Verification Batch V1 Verification Mca Cin Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Cin Verification Batch V1 Verification Mca Cin Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Cin Verification Batch V1 Verification Mca Cin Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_CIN_BATCH_FILE_CONTENT_NOT_SUPPORTED"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
+          "200 - Batch Processing In Progress": {
+            "value": {
+              "transaction_id": "8263c58f81d54cb3a8053ac22afefa4e",
+              "timestamp": 1732103344104,
+              "code": 200,
+              "message": "Batch Upload status fetched successfully",
+              "sub_code": "SUCCESS",
+              "data": {
+                "request_id": "673f7487fc0e4949b54e443a0bcc767d",
+                "status": 201,
+                "product_id": "",
+                "message": "batch processing in progress",
+                "batch_output_file_url": null
               }
             }
           }
         }
+      }
+    }
+  },
+
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 400 Get Bulk Verification Status V1 Verification Batch Processing Status Get",
+          "anyOf": [
+            { "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT" },
+            { "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST" }
+          ]
+        },
+        "examples": {
+          "400 - Bad Request": {
+            "value": {
+              "detail": "Bad Request"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 401 Get Bulk Verification Status V1 Verification Batch Processing Status Get",
+          "anyOf": [
+            { "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS" },
+            { "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT" },
+            { "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS" },
+            { "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE" }
+          ]
+        },
+        "examples": {
+          "401 - Not Authenticated": {
+            "value": {
+              "detail": "Not authenticated"
+            }
+          },
+          "401 - Invalid Client": {
+            "value": {
+              "detail": "Invalid client_id, access Denied"
+            }
+          },
+          "401 - Credentials Validation Failed": {
+            "value": {
+              "detail": "Could not validate credentials"
+            }
+          },
+          "401 - Incorrect Client Credentials": {
+            "value": {
+              "detail": "Incorrect client_id or client_secret"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "403": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 403 Get Bulk Verification Status V1 Verification Batch Processing Status Get",
+          "anyOf": [
+            { "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED" },
+            { "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN" }
+          ]
+        },
+        "examples": {
+          "403 - Invalid Token": {
+            "value": {
+              "detail": "Not a valid token"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "422": {
+    "description": "Unprocessable Entity",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
+        },
+        "examples": {
+          "422 - Invalid Request ID": {
+            "value": {
+              "code": 422,
+              "timestamp": 1732002741216,
+              "transaction_id": "88e4835cf10647b599ee675a473cddfd",
+              "sub_code": "INVALID_REQUEST_ID",
+              "message": "Invalid Request ID"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "title": "Response 500 Get Bulk Verification Status V1 Verification Batch Processing Status Get",
+          "anyOf": [
+            { "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR" },
+            { "$ref": "#/components/schemas/BAV_FAILED_AT_BANK" }
+          ]
+        },
+        "examples": {
+          "500 - Internal Server Error": {
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/mobile-intelligence/mobile-to-pan/batch": {
@@ -701,108 +1063,203 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
-                }
-              }
-            }
+    "201": {
+      "description": "Successful Response",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Mobile To Pan Batch V1 Mobile Intelligence Mobile To Pan Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Mobile To Pan Batch V1 Mobile Intelligence Mobile To Pan Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Mobile To Pan Batch V1 Mobile Intelligence Mobile To Pan Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Mobile To Pan Batch V1 Mobile Intelligence Mobile To Pan Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_MOBILE_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
+          "examples": {
+            "201 - Mobile to PAN Batch Processing Initiated": {
+              "value": {
+                "code": 201,
+                "timestamp": 1948475859595,
+                "transaction_id": "string",
+                "request_id": "string",
+                "message": "batch processing in progress",
+                "sub_code": "SUCCESS",
+                "output_batch_file": "https://bulk-data-processing.s3.ap-south-1.amazonaws.com/mobile-to-pan-batch-output-files/file.csv"
               }
             }
           }
         }
+      }
+    },
+    "400": {
+      "description": "Bad Request",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 400 Mobile To Pan Batch V1 Mobile Intelligence Mobile To Pan Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+              }
+            ]
+          },
+          "examples": {
+            "400 - Inactive Client": {
+              "value": {
+                "detail": "Inactive client_id"
+              }
+            },
+            "400 - Bad Request": {
+              "value": {
+                "detail": "Bad Request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "401": {
+      "description": "Unauthorized",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 401 Mobile To Pan Batch V1 Mobile Intelligence Mobile To Pan Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+              }
+            ]
+          },
+          "examples": {
+            "401 - Not Authenticated": {
+              "value": {
+                "detail": "Not authenticated"
+              }
+            },
+            "401 - Invalid Client": {
+              "value": {
+                "detail": "Invalid client_id, access Denied"
+              }
+            },
+            "401 - Credential Validation Failed": {
+              "value": {
+                "detail": "Could not validate credentials"
+              }
+            },
+            "401 - Incorrect Client Credentials": {
+              "value": {
+                "detail": "Incorrect client_id or client_secret"
+              }
+            }
+          }
+        }
+      }
+    },
+    "403": {
+      "description": "Forbidden",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 403 Mobile To Pan Batch V1 Mobile Intelligence Mobile To Pan Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+              }
+            ]
+          },
+          "examples": {
+            "403 - Invalid Token": {
+              "value": {
+                "detail": "Not a valid token"
+              }
+            },
+            "403 - Access Forbidden": {
+              "value": {
+                "detail": "Access forbidden"
+              }
+            }
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 422 Mobile To Pan Batch V1 Mobile Intelligence Mobile To Pan Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_MOBILE_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
+              }
+            ]
+          },
+          "examples": {
+            "422 - Invalid Batch File Format": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271522,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_FILE_FORMAT",
+                "message": "File format not supported"
+              }
+            },
+            "422 - Batch Size Limit Exceeded": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271509,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_SIZE",
+                "message": "Input File must have less than 1000 records"
+              }
+            },
+            "422 - Invalid Mobile Number File Headers": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271518,
+                "transaction_id": "string",
+                "sub_code": "INVALID_INPUT_FILE_FORMAT",
+                "message": "Input File must have 'mobile_number' only as headers"
+              }
+            }
+          }
+        }
+      }
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+          },
+          "examples": {
+            "500 - Internal Server Error": {
+              "value": {
+                "detail": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
       }
     },
     "/v1/mobile-intelligence/mobile-to-vehicle-rc": {
@@ -3658,25 +4115,117 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
+  "200": {
+    "description": "Successful Response",
+    "content": {
+      "application/json": {
+        "schema": {},
+        "examples": {
+          "200 - User Usage Report Generated Successfully": {
+            "value": {
+              "code": 200,
+              "timestamp": 1748417711157,
+              "transaction_id": "5a936bcee02d4b7a974db19a4cd1185e",
+              "sub_code": "SUCCESS",
+              "message": "User usage report generated successfully",
+              "data": {
+                "file_url": "https://deepvue-tech.s3.ap-south-1.amazonaws.com/client/usage-report/9147835.xlsx",
+                "usage_data": [
+                  {
+                    "Transaction Id": "9cb1fa27-c768-430c-9aa3-c13c477a1b0b",
+                    "Timestamp(UTC)": "2024-05-11T23:33:32.092089+00:00",
+                    "Product Id": "PAN-Plus",
+                    "Status": 200,
+                    "Message": "Invalid Pan Number.",
+                    "Charge": 2.95
+                  },
+                  {
+                    "Transaction Id": "fd93b66e-74e1-4150-8e0f-5b8f78a3a010",
+                    "Timestamp(UTC)": "2024-05-11T22:25:48.586394+00:00",
+                    "Product Id": "PAN-Plus",
+                    "Status": 200,
+                    "Message": "Pan Verified Successfully.",
+                    "Charge": 2.95
+                  },
+                  {
+                    "Transaction Id": "15d46c64-41fe-4938-8510-2aa87fba7694",
+                    "Timestamp(UTC)": "2024-05-11T22:25:07.844149+00:00",
+                    "Product Id": "PAN-Plus",
+                    "Status": 200,
+                    "Message": "Pan Verified Successfully.",
+                    "Charge": 2.95
+                  }
+                ]
               }
             }
           }
         }
+      }
+    }
+  },
+
+  "400": {
+    "description": "Bad Request",
+    "content": {
+      "application/json": {
+        "schema": {},
+        "examples": {
+          "400 - Date Range Too Long": {
+            "value": {
+              "code": 400,
+              "timestamp": 1748417890825,
+              "transaction_id": "994e6daf937c4137950368b72003ee5e",
+              "sub_code": "FAILED",
+              "message": "Date range too long. The maximum allowed date range is 7 days."
+            }
+          },
+          "400 - Inactive Client": {
+            "value": {
+              "detail": "Inactive client_id"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "401": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "schema": {},
+        "examples": {
+          "401 - Not Authenticated": {
+            "value": {
+              "detail": "Not authenticated"
+            }
+          },
+          "401 - Invalid Client Credentials": {
+            "value": {
+              "detail": "Incorrect client_id or client_secret"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "500": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "schema": {},
+        "examples": {
+          "500 - Internal Server Error": {
+            "value": {
+              "detail": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}
       }
     },
     "/v1/authorize": {
@@ -5614,108 +6163,203 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
-                }
-              }
-            }
+    "201": {
+      "description": "Successful Response",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Bulk Aadhaar Basic Verification V1 Verification Aadhaar Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Bulk Aadhaar Basic Verification V1 Verification Aadhaar Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Bulk Aadhaar Basic Verification V1 Verification Aadhaar Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Bulk Aadhaar Basic Verification V1 Verification Aadhaar Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AADHAAR_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                }
+          "examples": {
+            "201 - Batch Processing Initiated": {
+              "value": {
+                "code": 201,
+                "timestamp": 1948475859595,
+                "transaction_id": "string",
+                "request_id": "string",
+                "message": "batch processing in progress",
+                "sub_code": "SUCCESS",
+                "output_batch_file": "https://bulk-data-processing.s3.ap-south-1.amazonaws.com/mobile-to-pan-batch-output-files/file.csv"
               }
             }
           }
         }
+      }
+    },
+    "400": {
+      "description": "Bad Request",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 400 Bulk Aadhaar Basic Verification V1 Verification Aadhaar Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+              }
+            ]
+          },
+          "examples": {
+            "400 - Inactive Client": {
+              "value": {
+                "detail": "Inactive client_id"
+              }
+            },
+            "400 - Bad Request": {
+              "value": {
+                "detail": "Bad Request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "401": {
+      "description": "Unauthorized",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 401 Bulk Aadhaar Basic Verification V1 Verification Aadhaar Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+              }
+            ]
+          },
+          "examples": {
+            "401 - Not Authenticated": {
+              "value": {
+                "detail": "Not authenticated"
+              }
+            },
+            "401 - Invalid Client": {
+              "value": {
+                "detail": "Invalid client_id, access Denied"
+              }
+            },
+            "401 - Credentials Validation Failed": {
+              "value": {
+                "detail": "Could not validate credentials"
+              }
+            },
+            "401 - Incorrect Client Credentials": {
+              "value": {
+                "detail": "Incorrect client_id or client_secret"
+              }
+            }
+          }
+        }
+      }
+    },
+    "403": {
+      "description": "Forbidden",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 403 Bulk Aadhaar Basic Verification V1 Verification Aadhaar Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+              }
+            ]
+          },
+          "examples": {
+            "403 - Invalid Token": {
+              "value": {
+                "detail": "Not a valid token"
+              }
+            },
+            "403 - Access Forbidden": {
+              "value": {
+                "detail": "Access forbidden"
+              }
+            }
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 422 Bulk Aadhaar Basic Verification V1 Verification Aadhaar Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_AADHAAR_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
+              }
+            ]
+          },
+          "examples": {
+            "422 - Invalid Batch File Format": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271522,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_FILE_FORMAT",
+                "message": "File format not supported"
+              }
+            },
+            "422 - Batch Size Limit Exceeded": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271509,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_SIZE",
+                "message": "Input File must have less than 1000 records"
+              }
+            },
+            "422 - Invalid Input File Headers": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271518,
+                "transaction_id": "string",
+                "sub_code": "INVALID_INPUT_FILE_FORMAT",
+                "message": "Input File must have 'aadhaar_number' only as headers"
+              }
+            }
+          }
+        }
+      }
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+          },
+          "examples": {
+            "500 - Internal Server Error": {
+              "value": {
+                "detail": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
       }
     },
     "/v1/verification/panbasic": {
@@ -5999,116 +6643,211 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
-                }
-              }
-            }
+    "201": {
+      "description": "Successful Response",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Bulk Pan Basic Verification V1 Verification Panbasic Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Bulk Pan Basic Verification V1 Verification Panbasic Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Bulk Pan Basic Verification V1 Verification Panbasic Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Bulk Pan Basic Verification V1 Verification Panbasic Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_PAN_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 500 Bulk Pan Basic Verification V1 Verification Panbasic Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                    },
-                    {
-                      "$ref": "#/components/schemas/BAV_FAILED_AT_BANK"
-                    }
-                  ]
-                }
+          "examples": {
+            "201 - Batch Processing Initiated": {
+              "value": {
+                "code": 201,
+                "timestamp": 1948475859595,
+                "transaction_id": "string",
+                "request_id": "string",
+                "message": "batch processing in progress",
+                "sub_code": "SUCCESS",
+                "output_batch_file": "https://bulk-data-processing.s3.ap-south-1.amazonaws.com/mobile-to-pan-batch-output-files/file.csv"
               }
             }
           }
         }
+      }
+    },
+    "400": {
+      "description": "Bad Request",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 400 Bulk Pan Basic Verification V1 Verification Panbasic Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+              }
+            ]
+          },
+          "examples": {
+            "400 - Inactive Client": {
+              "value": {
+                "detail": "Inactive client_id"
+              }
+            },
+            "400 - Bad Request": {
+              "value": {
+                "detail": "Bad Request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "401": {
+      "description": "Unauthorized",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 401 Bulk Pan Basic Verification V1 Verification Panbasic Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+              }
+            ]
+          },
+          "examples": {
+            "401 - Not Authenticated": {
+              "value": {
+                "detail": "Not authenticated"
+              }
+            },
+            "401 - Invalid Client": {
+              "value": {
+                "detail": "Invalid client_id, access Denied"
+              }
+            },
+            "401 - Credential Validation Failed": {
+              "value": {
+                "detail": "Could not validate credentials"
+              }
+            },
+            "401 - Incorrect Client Credentials": {
+              "value": {
+                "detail": "Incorrect client_id or client_secret"
+              }
+            }
+          }
+        }
+      }
+    },
+    "403": {
+      "description": "Forbidden",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 403 Bulk Pan Basic Verification V1 Verification Panbasic Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+              }
+            ]
+          },
+          "examples": {
+            "403 - Invalid Token": {
+              "value": {
+                "detail": "Not a valid token"
+              }
+            },
+            "403 - Access Forbidden": {
+              "value": {
+                "detail": "Access forbidden"
+              }
+            }
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 422 Bulk Pan Basic Verification V1 Verification Panbasic Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_PAN_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
+              }
+            ]
+          },
+          "examples": {
+            "422 - Invalid Batch File Format": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271522,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_FILE_FORMAT",
+                "message": "File format not supported"
+              }
+            },
+            "422 - Batch Size Limit Exceeded": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271509,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_SIZE",
+                "message": "Input File must have less than 1000 records"
+              }
+            },
+            "422 - Invalid PAN File Headers": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271518,
+                "transaction_id": "string",
+                "sub_code": "INVALID_INPUT_FILE_FORMAT",
+                "message": "Input File must have 'pan_number' only as headers"
+              }
+            }
+          }
+        }
+      }
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 500 Bulk Pan Basic Verification V1 Verification Panbasic Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+              },
+              {
+                "$ref": "#/components/schemas/BAV_FAILED_AT_BANK"
+              }
+            ]
+          },
+          "examples": {
+            "500 - Internal Server Error": {
+              "value": {
+                "detail": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
       }
     },
     "/v1/verification/panadvanced": {
@@ -6574,116 +7313,211 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
-                }
-              }
-            }
+    "201": {
+      "description": "Successful Response",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Bulk Pan Plus Verification V1 Verification Pan Plus Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Bulk Pan Plus Verification V1 Verification Pan Plus Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Bulk Pan Plus Verification V1 Verification Pan Plus Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Bulk Pan Plus Verification V1 Verification Pan Plus Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_PAN_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 500 Bulk Pan Plus Verification V1 Verification Pan Plus Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                    },
-                    {
-                      "$ref": "#/components/schemas/BAV_FAILED_AT_BANK"
-                    }
-                  ]
-                }
+          "examples": {
+            "201 - Batch Processing Initiated": {
+              "value": {
+                "code": 201,
+                "timestamp": 1948475859595,
+                "transaction_id": "string",
+                "request_id": "string",
+                "message": "batch processing in progress",
+                "sub_code": "SUCCESS",
+                "output_batch_file": "https://bulk-data-processing.s3.ap-south-1.amazonaws.com/mobile-to-pan-batch-output-files/file.csv"
               }
             }
           }
         }
+      }
+    },
+    "400": {
+      "description": "Bad Request",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 400 Bulk Pan Plus Verification V1 Verification Pan Plus Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+              }
+            ]
+          },
+          "examples": {
+            "400 - Inactive Client": {
+              "value": {
+                "detail": "Inactive client_id"
+              }
+            },
+            "400 - Bad Request": {
+              "value": {
+                "detail": "Bad Request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "401": {
+      "description": "Unauthorized",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 401 Bulk Pan Plus Verification V1 Verification Pan Plus Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+              }
+            ]
+          },
+          "examples": {
+            "401 - Not Authenticated": {
+              "value": {
+                "detail": "Not authenticated"
+              }
+            },
+            "401 - Invalid Client": {
+              "value": {
+                "detail": "Invalid client_id, access Denied"
+              }
+            },
+            "401 - Credential Validation Failed": {
+              "value": {
+                "detail": "Could not validate credentials"
+              }
+            },
+            "401 - Incorrect Client Credentials": {
+              "value": {
+                "detail": "Incorrect client_id or client_secret"
+              }
+            }
+          }
+        }
+      }
+    },
+    "403": {
+      "description": "Forbidden",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 403 Bulk Pan Plus Verification V1 Verification Pan Plus Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+              }
+            ]
+          },
+          "examples": {
+            "403 - Invalid Token": {
+              "value": {
+                "detail": "Not a valid token"
+              }
+            },
+            "403 - Access Forbidden": {
+              "value": {
+                "detail": "Access forbidden"
+              }
+            }
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 422 Bulk Pan Plus Verification V1 Verification Pan Plus Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_PAN_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
+              }
+            ]
+          },
+          "examples": {
+            "422 - Invalid Batch File Format": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271522,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_FILE_FORMAT",
+                "message": "File format not supported"
+              }
+            },
+            "422 - Batch Size Limit Exceeded": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271509,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_SIZE",
+                "message": "Input File must have less than 1000 records"
+              }
+            },
+            "422 - Invalid PAN File Headers": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271518,
+                "transaction_id": "string",
+                "sub_code": "INVALID_INPUT_FILE_FORMAT",
+                "message": "Input File must have 'pan_number' only as headers"
+              }
+            }
+          }
+        }
+      }
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 500 Bulk Pan Plus Verification V1 Verification Pan Plus Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+              },
+              {
+                "$ref": "#/components/schemas/BAV_FAILED_AT_BANK"
+              }
+            ]
+          },
+          "examples": {
+            "500 - Internal Server Error": {
+              "value": {
+                "detail": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
       }
     },
     "/v1/verification/pan-kra-status": {
@@ -9376,116 +10210,211 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
-                }
-              }
-            }
+    "201": {
+      "description": "Successful Response",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Bulk Udyam Verification V1 Verification Async Udyam Details Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Bulk Udyam Verification V1 Verification Async Udyam Details Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Bulk Udyam Verification V1 Verification Async Udyam Details Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Bulk Udyam Verification V1 Verification Async Udyam Details Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UDYAM_AADHAR_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 500 Bulk Udyam Verification V1 Verification Async Udyam Details Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                    },
-                    {
-                      "$ref": "#/components/schemas/BAV_FAILED_AT_BANK"
-                    }
-                  ]
-                }
+          "examples": {
+            "201 - Udyam Batch Verification Initiated": {
+              "value": {
+                "code": 201,
+                "timestamp": 1948475859595,
+                "transaction_id": "string",
+                "request_id": "string",
+                "message": "batch processing in progress",
+                "sub_code": "SUCCESS",
+                "output_batch_file": "https://bulk-data-processing.s3.ap-south-1.amazonaws.com/mobile-to-pan-batch-output-files/file.csv"
               }
             }
           }
         }
+      }
+    },
+    "400": {
+      "description": "Bad Request",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 400 Bulk Udyam Verification V1 Verification Async Udyam Details Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+              }
+            ]
+          },
+          "examples": {
+            "400 - Inactive Client": {
+              "value": {
+                "detail": "Inactive client_id"
+              }
+            },
+            "400 - Bad Request": {
+              "value": {
+                "detail": "Bad Request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "401": {
+      "description": "Unauthorized",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 401 Bulk Udyam Verification V1 Verification Async Udyam Details Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+              }
+            ]
+          },
+          "examples": {
+            "401 - Not Authenticated": {
+              "value": {
+                "detail": "Not authenticated"
+              }
+            },
+            "401 - Invalid Client": {
+              "value": {
+                "detail": "Invalid client_id, access Denied"
+              }
+            },
+            "401 - Credential Validation Failed": {
+              "value": {
+                "detail": "Could not validate credentials"
+              }
+            },
+            "401 - Incorrect Client Credentials": {
+              "value": {
+                "detail": "Incorrect client_id or client_secret"
+              }
+            }
+          }
+        }
+      }
+    },
+    "403": {
+      "description": "Forbidden",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 403 Bulk Udyam Verification V1 Verification Async Udyam Details Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+              }
+            ]
+          },
+          "examples": {
+            "403 - Invalid Token": {
+              "value": {
+                "detail": "Not a valid token"
+              }
+            },
+            "403 - Access Forbidden": {
+              "value": {
+                "detail": "Access forbidden"
+              }
+            }
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 422 Bulk Udyam Verification V1 Verification Async Udyam Details Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_UDYAM_AADHAR_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
+              }
+            ]
+          },
+          "examples": {
+            "422 - Invalid Batch File Format": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271522,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_FILE_FORMAT",
+                "message": "File format not supported"
+              }
+            },
+            "422 - Batch Size Limit Exceeded": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271509,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_SIZE",
+                "message": "Input File must have less than 1000 records"
+              }
+            },
+            "422 - Invalid Udyam Aadhaar File Headers": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271518,
+                "transaction_id": "string",
+                "sub_code": "INVALID_INPUT_FILE_FORMAT",
+                "message": "Input File must have 'udyam_aadhaar_number' only as headers"
+              }
+            }
+          }
+        }
+      }
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 500 Bulk Udyam Verification V1 Verification Async Udyam Details Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+              },
+              {
+                "$ref": "#/components/schemas/BAV_FAILED_AT_BANK"
+              }
+            ]
+          },
+          "examples": {
+            "500 - Internal Server Error": {
+              "value": {
+                "detail": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
       }
     },
     "/v1/verification/async/post-udyog-details": {
@@ -9847,116 +10776,211 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
-                }
-              }
-            }
+    "201": {
+      "description": "Successful Response",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Bulk Udyog Verification V1 Verification Async Udyog Details Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Bulk Udyog Verification V1 Verification Async Udyog Details Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Bulk Udyog Verification V1 Verification Async Udyog Details Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Bulk Udyog Verification V1 Verification Async Udyog Details Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UDYOG_AADHAR_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 500 Bulk Udyog Verification V1 Verification Async Udyog Details Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                    },
-                    {
-                      "$ref": "#/components/schemas/BAV_FAILED_AT_BANK"
-                    }
-                  ]
-                }
+          "examples": {
+            "201 - Udyog Batch Verification Initiated": {
+              "value": {
+                "code": 201,
+                "timestamp": 1948475859595,
+                "transaction_id": "string",
+                "request_id": "string",
+                "message": "batch processing in progress",
+                "sub_code": "SUCCESS",
+                "output_batch_file": "https://bulk-data-processing.s3.ap-south-1.amazonaws.com/mobile-to-pan-batch-output-files/file.csv"
               }
             }
           }
         }
+      }
+    },
+    "400": {
+      "description": "Bad Request",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 400 Bulk Udyog Verification V1 Verification Async Udyog Details Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+              }
+            ]
+          },
+          "examples": {
+            "400 - Inactive Client": {
+              "value": {
+                "detail": "Inactive client_id"
+              }
+            },
+            "400 - Bad Request": {
+              "value": {
+                "detail": "Bad Request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "401": {
+      "description": "Unauthorized",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 401 Bulk Udyog Verification V1 Verification Async Udyog Details Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+              }
+            ]
+          },
+          "examples": {
+            "401 - Not Authenticated": {
+              "value": {
+                "detail": "Not authenticated"
+              }
+            },
+            "401 - Invalid Client": {
+              "value": {
+                "detail": "Invalid client_id, access Denied"
+              }
+            },
+            "401 - Credential Validation Failed": {
+              "value": {
+                "detail": "Could not validate credentials"
+              }
+            },
+            "401 - Incorrect Client Credentials": {
+              "value": {
+                "detail": "Incorrect client_id or client_secret"
+              }
+            }
+          }
+        }
+      }
+    },
+    "403": {
+      "description": "Forbidden",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 403 Bulk Udyog Verification V1 Verification Async Udyog Details Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+              }
+            ]
+          },
+          "examples": {
+            "403 - Invalid Token": {
+              "value": {
+                "detail": "Not a valid token"
+              }
+            },
+            "403 - Access Forbidden": {
+              "value": {
+                "detail": "Access forbidden"
+              }
+            }
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 422 Bulk Udyog Verification V1 Verification Async Udyog Details Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_UDYOG_AADHAR_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
+              }
+            ]
+          },
+          "examples": {
+            "422 - Invalid Batch File Format": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271522,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_FILE_FORMAT",
+                "message": "File format not supported"
+              }
+            },
+            "422 - Batch Size Limit Exceeded": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271509,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_SIZE",
+                "message": "Input File must have less than 1000 records"
+              }
+            },
+            "422 - Invalid Udyog Aadhaar File Headers": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271518,
+                "transaction_id": "string",
+                "sub_code": "INVALID_INPUT_FILE_FORMAT",
+                "message": "Input File must have 'udyog_aadhaar_number' only as headers"
+              }
+            }
+          }
+        }
+      }
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 500 Bulk Udyog Verification V1 Verification Async Udyog Details Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+              },
+              {
+                "$ref": "#/components/schemas/BAV_FAILED_AT_BANK"
+              }
+            ]
+          },
+          "examples": {
+            "500 - Internal Server Error": {
+              "value": {
+                "detail": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
       }
     },
     "/v1/verification/async/post-msme-details": {
@@ -10501,116 +11525,211 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
-                }
-              }
-            }
+    "201": {
+      "description": "Successful Response",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Bulk Gstin Basic Verification V1 Verification Gstinlite Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Bulk Gstin Basic Verification V1 Verification Gstinlite Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Bulk Gstin Basic Verification V1 Verification Gstinlite Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Bulk Gstin Basic Verification V1 Verification Gstinlite Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_GSTIN_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 500 Bulk Gstin Basic Verification V1 Verification Gstinlite Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                    },
-                    {
-                      "$ref": "#/components/schemas/BAV_FAILED_AT_BANK"
-                    }
-                  ]
-                }
+          "examples": {
+            "201 - GSTIN Basic Batch Processing Initiated": {
+              "value": {
+                "code": 201,
+                "timestamp": 1948475859595,
+                "transaction_id": "string",
+                "request_id": "string",
+                "message": "batch processing in progress",
+                "sub_code": "SUCCESS",
+                "output_batch_file": "https://bulk-data-processing.s3.ap-south-1.amazonaws.com/mobile-to-pan-batch-output-files/file.csv"
               }
             }
           }
         }
+      }
+    },
+    "400": {
+      "description": "Bad Request",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 400 Bulk Gstin Basic Verification V1 Verification Gstinlite Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+              }
+            ]
+          },
+          "examples": {
+            "400 - Inactive Client": {
+              "value": {
+                "detail": "Inactive client_id"
+              }
+            },
+            "400 - Bad Request": {
+              "value": {
+                "detail": "Bad Request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "401": {
+      "description": "Unauthorized",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 401 Bulk Gstin Basic Verification V1 Verification Gstinlite Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+              }
+            ]
+          },
+          "examples": {
+            "401 - Not Authenticated": {
+              "value": {
+                "detail": "Not authenticated"
+              }
+            },
+            "401 - Invalid Client": {
+              "value": {
+                "detail": "Invalid client_id, access Denied"
+              }
+            },
+            "401 - Credential Validation Failed": {
+              "value": {
+                "detail": "Could not validate credentials"
+              }
+            },
+            "401 - Incorrect Client Credentials": {
+              "value": {
+                "detail": "Incorrect client_id or client_secret"
+              }
+            }
+          }
+        }
+      }
+    },
+    "403": {
+      "description": "Forbidden",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 403 Bulk Gstin Basic Verification V1 Verification Gstinlite Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+              }
+            ]
+          },
+          "examples": {
+            "403 - Invalid Token": {
+              "value": {
+                "detail": "Not a valid token"
+              }
+            },
+            "403 - Access Forbidden": {
+              "value": {
+                "detail": "Access forbidden"
+              }
+            }
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 422 Bulk Gstin Basic Verification V1 Verification Gstinlite Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_GSTIN_NUMBER_BATCH_FILE_CONTENT_NOT_SUPPORTED"
+              }
+            ]
+          },
+          "examples": {
+            "422 - Invalid Batch File Format": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271522,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_FILE_FORMAT",
+                "message": "File format not supported"
+              }
+            },
+            "422 - Batch Size Limit Exceeded": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271509,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_SIZE",
+                "message": "Input File must have less than 1000 records"
+              }
+            },
+            "422 - Invalid GSTIN File Headers": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271518,
+                "transaction_id": "string",
+                "sub_code": "INVALID_INPUT_FILE_FORMAT",
+                "message": "Input File must have 'gstin_number' only as headers"
+              }
+            }
+          }
+        }
+      }
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 500 Bulk Gstin Basic Verification V1 Verification Gstinlite Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+              },
+              {
+                "$ref": "#/components/schemas/BAV_FAILED_AT_BANK"
+              }
+            ]
+          },
+          "examples": {
+            "500 - Internal Server Error": {
+              "value": {
+                "detail": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
       }
     },
     "/v1/verification/gstin-advanced": {
@@ -13606,116 +14725,211 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
-                }
-              }
-            }
+    "201": {
+      "description": "Successful Response",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_INITIATED_SUCCESSFULLY"
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 400 Bulk Bank Account Verification V1 Verification Bankaccount Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 401 Bulk Bank Account Verification V1 Verification Bankaccount Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 403 Bulk Bank Account Verification V1 Verification Bankaccount Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 422 Bulk Bank Account Verification V1 Verification Bankaccount Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
-                    },
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_CONTENT_NOT_SUPPORTED"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response 500 Bulk Bank Account Verification V1 Verification Bankaccount Batch Post",
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
-                    },
-                    {
-                      "$ref": "#/components/schemas/BAV_FAILED_AT_BANK"
-                    }
-                  ]
-                }
+          "examples": {
+            "201 - Bank Account Batch Processing Initiated": {
+              "value": {
+                "code": 201,
+                "timestamp": 1948475859595,
+                "transaction_id": "string",
+                "request_id": "string",
+                "message": "batch processing in progress",
+                "sub_code": "SUCCESS",
+                "output_batch_file": "https://bulk-data-processing.s3.ap-south-1.amazonaws.com/mobile-to-pan-batch-output-files/file.csv"
               }
             }
           }
         }
+      }
+    },
+    "400": {
+      "description": "Bad Request",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 400 Bulk Bank Account Verification V1 Verification Bankaccount Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INACTIVE_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BAD_REQUEST"
+              }
+            ]
+          },
+          "examples": {
+            "400 - Inactive Client": {
+              "value": {
+                "detail": "Inactive client_id"
+              }
+            },
+            "400 - Bad Request": {
+              "value": {
+                "detail": "Bad Request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "401": {
+      "description": "Unauthorized",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 401 Bulk Bank Account Verification V1 Verification Bankaccount Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_UNAUTHENTICATED_ACCESS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CLIENT"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_INVALID_CREDENTIALS"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_AUTHORIZATION_FAILURE"
+              }
+            ]
+          },
+          "examples": {
+            "401 - Not Authenticated": {
+              "value": {
+                "detail": "Not authenticated"
+              }
+            },
+            "401 - Invalid Client": {
+              "value": {
+                "detail": "Invalid client_id, access Denied"
+              }
+            },
+            "401 - Credential Validation Failed": {
+              "value": {
+                "detail": "Could not validate credentials"
+              }
+            },
+            "401 - Incorrect Client Credentials": {
+              "value": {
+                "detail": "Incorrect client_id or client_secret"
+              }
+            }
+          }
+        }
+      }
+    },
+    "403": {
+      "description": "Forbidden",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 403 Bulk Bank Account Verification V1 Verification Bankaccount Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_TOKEN_EXPIRED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_ACCESS_FORBIDDEN"
+              }
+            ]
+          },
+          "examples": {
+            "403 - Invalid Token": {
+              "value": {
+                "detail": "Not a valid token"
+              }
+            },
+            "403 - Access Forbidden": {
+              "value": {
+                "detail": "Access forbidden"
+              }
+            }
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 422 Bulk Bank Account Verification V1 Verification Bankaccount Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_FORMAT_NOT_SUPPORTED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_VERIFICATION_LIMIT_EXCEEDED"
+              },
+              {
+                "$ref": "#/components/schemas/RESPONSE_BATCH_FILE_CONTENT_NOT_SUPPORTED"
+              }
+            ]
+          },
+          "examples": {
+            "422 - Invalid Batch File Format": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271522,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_FILE_FORMAT",
+                "message": "File format not supported"
+              }
+            },
+            "422 - Batch Size Limit Exceeded": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271509,
+                "transaction_id": "string",
+                "sub_code": "INVALID_BATCH_SIZE",
+                "message": "Input File must have less than 1000 records"
+              }
+            },
+            "422 - Invalid Bank Account File Headers": {
+              "value": {
+                "code": 422,
+                "timestamp": 1731652271518,
+                "transaction_id": "string",
+                "sub_code": "INVALID_INPUT_FILE_FORMAT",
+                "message": "Input File must have 'account_number' and 'ifsc' only as headers"
+              }
+            }
+          }
+        }
+      }
+    },
+    "500": {
+      "description": "Internal Server Error",
+      "content": {
+        "application/json": {
+          "schema": {
+            "title": "Response 500 Bulk Bank Account Verification V1 Verification Bankaccount Batch Post",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RESPONSE_INTERNAL_SERVER_ERROR"
+              },
+              {
+                "$ref": "#/components/schemas/BAV_FAILED_AT_BANK"
+              }
+            ]
+          },
+          "examples": {
+            "500 - Internal Server Error": {
+              "value": {
+                "detail": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
       }
     },
     "/v1/verification/ifsc": {
