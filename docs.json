@@ -11,7 +11,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Introduction",
+        "tab": "API reference",
         "groups": [
           {
             "group": "Getting started",
@@ -19,12 +19,7 @@
               "developer_documentation",
               "introduction"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
+          },
           {
             "group": "API Keys",
             "pages": [
